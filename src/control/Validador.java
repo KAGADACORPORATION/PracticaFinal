@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import modelo.Articulo;
 import modelo.Cliente;
 import modelo.Linea;

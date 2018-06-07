@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import control.Logica;
 import control.Puente;
+import facade.Datos;
 import modelo.Cliente;
-import modelo.Datos;
 import utiles.Utiles;
 import vista.VistaEjecutarBuscarArticulo;
 import vista.VistaEjecutarBuscarCliente;

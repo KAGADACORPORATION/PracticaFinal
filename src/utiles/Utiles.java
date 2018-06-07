@@ -11,6 +11,8 @@ import control.Puente;
 
 public class Utiles {
 	public static final String RUTACLIENTE = "./data/clientes.data";
+	public static final String RUTAINDICECLIENTES = "./data/clientes.index";
+
 	public static final int CAMPOSCLIENTE = 4;
 	
 	public static ImageIcon createScaledIcon(ImageIcon Imagen, int height) {

@@ -12,13 +12,7 @@ public class Articulo implements Serializable {
 	private int idArticulo;
 	private String nombre;
 	private String descripcion;
-	private Proveedor proveedor;
 	private LinkedList<Precio> precios;
-
-	public Articulo(int idArticulo, String nombre, String descripcion, float precio, Proveedor proveedor) {
-		this(idArticulo, nombre, descripcion, precio);
-		this.proveedor = proveedor;
-	}
 
 	public Articulo(int idArticulo, String nombre, String descripcion, float precio) {
 		super();
@@ -75,8 +69,5 @@ public class Articulo implements Serializable {
 		return descripcion;
 	}
 
-	public Proveedor getProveedor() {
-		return proveedor;
-	}
 
 }
