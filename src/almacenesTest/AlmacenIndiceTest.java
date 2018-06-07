@@ -8,11 +8,12 @@ import org.junit.Test;
 
 import almacenes.AlmacenIndice;
 import modelo.Cliente;
+import utiles.Utiles;
 
 public class AlmacenIndiceTest {
 
-	private static final String CLIENTES_DAT = "clientes.dat";
-	private static final String INDICE_DAT = "indice.dat";
+	private static final String CLIENTES_DAT = Utiles.RUTACLIENTE;
+	private static final String INDICE_DAT = Utiles.RUTAINDICECLIENTES;
 	AlmacenIndice<Cliente, String> instancia;
 	
 	@Before
