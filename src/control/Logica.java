@@ -1,9 +1,10 @@
 package control;
 
 import java.util.ArrayList;
+
+import facade.Datos;
 import modelo.Articulo;
 import modelo.Cliente;
-import modelo.Datos;
 import modelo.Pedido;
 
 public class Logica {
