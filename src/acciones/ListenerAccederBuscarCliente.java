@@ -9,10 +9,11 @@ import javax.swing.table.DefaultTableModel;
 
 import control.Puente;
 import modelo.Cliente;
+import modelo.acceso.ListenerBuscarMouse;
 import utiles.Utiles;
 import vista.VistaEjecutarBuscarCliente;
 
-public class ListenerAccederBuscarCliente implements ActionListener{
+public class ListenerAccederBuscarCliente implements ActionListener {
 
 	private Puente puente;
 
@@ -26,6 +27,7 @@ public class ListenerAccederBuscarCliente implements ActionListener{
 		puente.getContentPane().removeAll();
 		puente.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
 		puente.getContentPane().add(puente.getVistaEjecutarBuscarCliente());
+		VistaEjecutarBuscarCliente vista = puente.getVistaEjecutarBuscarCliente();
 		ArrayList<Cliente> clientes = this.puente.getLogica().getDatos().getClientes();
 		while (this.puente.getModeloTabla().getRowCount() > 0) {
 			this.puente.getModeloTabla().removeRow(0);
@@ -39,13 +41,13 @@ public class ListenerAccederBuscarCliente implements ActionListener{
 			this.puente.getModeloTabla().addRow(adicion);
 			Utiles.actualizar(puente);
 		}
+		vista.getTable().addMouseListener(new ListenerBuscarMouse(puente));
 		Utiles.actualizar(puente);
-		
+
 	}
 
 	public VistaEjecutarBuscarCliente getVistaEjecutarBuscarCliente() {
 		return this.getVistaEjecutarBuscarCliente();
 	}
-	
 
 }
