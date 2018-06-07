@@ -11,7 +11,6 @@ public class almacenRutaMapeada<T, K> {
 
 	public almacenRutaMapeada(AlmacenMap<K, Integer> map, String extension, String pathDatos, String pathPadre) {
 		super();
-		this.pathDatos = pathDatos;
 		this.extension = extension;
 		this.pathDatos = pathDatos;
 		this.pathPadre = pathPadre;
@@ -55,6 +54,11 @@ public class almacenRutaMapeada<T, K> {
 
 	public int obtenNumero() {
 		return mapa.getSize();
+	}
+
+	public boolean borrar(String nombre) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

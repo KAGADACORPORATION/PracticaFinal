@@ -3,6 +3,7 @@ package almacenes;
 import java.io.File;
 
 import acceso.DAORuta;
+import modelo.Pedido;
 
 public class AlmacenRutaDestino<T> {
 	private DAORuta<T> daoRuta;
@@ -63,5 +64,10 @@ public class AlmacenRutaDestino<T> {
 		for (int i = 0; i < elements.length; i++) {
 			definitivos[i]=elements[i].split("\\.")[0];
 		}
+	}
+
+	public boolean borrar(Pedido pedido) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

@@ -1,13 +1,8 @@
 package almacenesTest;
 
 import static org.junit.Assert.*;
-
 import java.io.File;
-import java.util.ArrayList;
 import java.util.TreeSet;
-
-import javax.rmi.CORBA.Util;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
