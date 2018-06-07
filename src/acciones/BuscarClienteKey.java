@@ -23,22 +23,13 @@ public class BuscarClienteKey implements KeyListener {
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {
-
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-	}
-
-	@Override
 	public void keyReleased(KeyEvent e) {
 		VistaEjecutarBuscarCliente vista = puente.getVistaAccederBuscarCliente().getVistaEjecutarBuscarCliente();
 		cadena = vista.getTextField().getText();
 		while (this.puente.getModeloTabla().getRowCount() > 0) {
 			this.puente.getModeloTabla().removeRow(0);
 		}
-		
+
 		ArrayList<Cliente> clientes = this.puente.getLogica().getDatos().getClientes();
 		for (int i = 0; i < clientes.size(); i++) {
 			Cliente clienteAux = this.puente.getLogica().getDatos().getClientes().get(i);
@@ -47,8 +38,16 @@ public class BuscarClienteKey implements KeyListener {
 			if (adicion[0].toLowerCase().startsWith(cadena.toString())) {
 				this.puente.getModeloTabla().addRow(adicion);
 			}
-
 		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
 	}
 
 }
