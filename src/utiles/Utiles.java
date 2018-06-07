@@ -10,10 +10,15 @@ import javax.swing.SwingUtilities;
 import control.Puente;
 
 public class Utiles {
-	public static final String RUTACLIENTE = "./data/clientes.data";
-	public static final String RUTAINDICECLIENTES = "./data/clientes.index";
-
+	public static final String RUTACLIENTE = "./data/clientes/clientes.data";
+	public static final String RUTAINDICECLIENTES = "./data/clientes/clientes.index";
 	public static final int CAMPOSCLIENTE = 4;
+	public static final String DATA = "data";
+	public static final String ARTICULOS = "articulos";
+	public static final String ART = "art";
+	public static final String ARTICULO_MAP = "articulo.map";
+	public static final String PEDIDORUTA = "./data/pedidos";
+	
 	
 	public static ImageIcon createScaledIcon(ImageIcon Imagen, int height) {
 		return new ImageIcon(Imagen.getImage().getScaledInstance(height - 2, height - 2, Image.SCALE_SMOOTH));

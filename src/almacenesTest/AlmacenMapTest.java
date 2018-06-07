@@ -1,7 +1,6 @@
 package almacenesTest;
 
 import static org.junit.Assert.*;
-
 import java.io.File;
 import java.util.TreeMap;
 import org.junit.After;
