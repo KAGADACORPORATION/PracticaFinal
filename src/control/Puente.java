@@ -17,7 +17,7 @@ import acciones.RegistrarArticulo;
 import acciones.ListenerCliente;
 import acciones.RegistrarPedido;
 import vista.VistaPrincipal;
-import acciones.pruebapedido;
+import acciones.ListenerElegirClientePedido;
 
 public class Puente extends VistaPrincipal {
 
@@ -47,7 +47,7 @@ public class Puente extends VistaPrincipal {
 		this.mntmNuevoPedido.addActionListener(new ListenerAccederAltaPedido(this));
 		
 		this.panelPedido.getBotonPedido().addActionListener(new RegistrarPedido(this));
-		this.getVistaEjecutarAltaPedido().getButtonBuscarCliente().addActionListener(new pruebapedido(this));
+		this.getVistaEjecutarAltaPedido().getButtonBuscarCliente().addActionListener(new ListenerElegirClientePedido(this));
 		
 	}
 
