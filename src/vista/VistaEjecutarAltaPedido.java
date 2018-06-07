@@ -24,10 +24,10 @@ public class VistaEjecutarAltaPedido extends JPanel {
 	private JTextField textIdentificacion;
 	private JTextField textCantidad;
 	private JButton btnConfirmarPedido;
-	private JComboBox comboBoxArticulo;
 	private JButton btnAddLinea;
-	private JComboBox comboBoxCliente;
 	private JLabel lblMensaje;
+	private JButton buttonBuscarCliente;
+	private JButton buttonBucarArticulo;
 
 	public VistaEjecutarAltaPedido() {
 		setLayout(new BorderLayout(0, 0));
@@ -70,15 +70,13 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 2;
 		panel.add(lblNewLabel, gbc_lblNewLabel);
-
-		comboBoxCliente = new JComboBox();
-		GridBagConstraints gbc_comboBoxCliente = new GridBagConstraints();
-		gbc_comboBoxCliente.gridwidth = 2;
-		gbc_comboBoxCliente.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxCliente.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxCliente.gridx = 2;
-		gbc_comboBoxCliente.gridy = 2;
-		panel.add(comboBoxCliente, gbc_comboBoxCliente);
+		
+		buttonBuscarCliente = new JButton("...");
+		GridBagConstraints gbc_buttonBuscarCliente = new GridBagConstraints();
+		gbc_buttonBuscarCliente.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonBuscarCliente.gridx = 2;
+		gbc_buttonBuscarCliente.gridy = 2;
+		panel.add(buttonBuscarCliente, gbc_buttonBuscarCliente);
 
 		JLabel lblArtculo = new JLabel("Art\u00EDculo:");
 		GridBagConstraints gbc_lblArtculo = new GridBagConstraints();
@@ -87,15 +85,13 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		gbc_lblArtculo.gridx = 1;
 		gbc_lblArtculo.gridy = 4;
 		panel.add(lblArtculo, gbc_lblArtculo);
-
-		comboBoxArticulo = new JComboBox();
-		GridBagConstraints gbc_comboBoxArticulo = new GridBagConstraints();
-		gbc_comboBoxArticulo.gridwidth = 2;
-		gbc_comboBoxArticulo.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxArticulo.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxArticulo.gridx = 2;
-		gbc_comboBoxArticulo.gridy = 4;
-		panel.add(comboBoxArticulo, gbc_comboBoxArticulo);
+		
+		buttonBucarArticulo = new JButton("...");
+		GridBagConstraints gbc_buttonBucarArticulo = new GridBagConstraints();
+		gbc_buttonBucarArticulo.insets = new Insets(0, 0, 5, 5);
+		gbc_buttonBucarArticulo.gridx = 2;
+		gbc_buttonBucarArticulo.gridy = 4;
+		panel.add(buttonBucarArticulo, gbc_buttonBucarArticulo);
 
 		JLabel lblCantidad = new JLabel("cantidad");
 		GridBagConstraints gbc_lblCantidad = new GridBagConstraints();
@@ -150,6 +146,14 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		add(lblMensaje, BorderLayout.SOUTH);
 	}
 
+	public JButton getButtonBuscarCliente() {
+		return buttonBuscarCliente;
+	}
+
+	public JButton getButtonBucarArticulo() {
+		return buttonBucarArticulo;
+	}
+
 	public JLabel getLblMensaje() {
 		return lblMensaje;
 	}
@@ -158,16 +162,8 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		return textIdentificacion;
 	}
 
-	public JComboBox getComboBoxArticulo() {
-		return comboBoxArticulo;
-	}
-
 	public JButton getBtnAddLinea() {
 		return btnAddLinea;
-	}
-
-	public JComboBox getComboBoxCliente() {
-		return comboBoxCliente;
 	}
 
 	public JTextField getTextCantidad() {
