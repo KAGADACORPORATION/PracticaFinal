@@ -20,16 +20,16 @@ public class Datos {
 	
 	public Datos() {
 		super();
-		this.clientes = new AlmacenIndice<>("clientes.data","clientes.index");
+		this.clientes = new AlmacenIndice<>(Utiles.RUTAINDICECLIENTES,Utiles.RUTACLIENTE);
 //		this.articulos = new almacenRutaMapeada<>(new AlmacenMap<>(new TreeMap<String, Integer>(), Utiles.ARTICULO_MAP), Utiles.ART, Utiles.ARTICULOS, Utiles.DATA);
 //		this.pedidos = new AlmacenRutaDestino<>(Utiles.PEDIDORUTA, "ped");
 	}
 	
-	public boolean grabarCliente(Cliente cliente) {
+	public boolean grabar(Cliente cliente) {
 		return clientes.grabar(cliente, cliente.getRazonSocial());
 	}
 	
-	public boolean borrarCliente(Cliente cliente) {
+	public boolean borrar(Cliente cliente) {
 		boolean retorno=false;
 		if(clientes.borrar(cliente.getRazonSocial()))retorno=true;
 		return retorno;
@@ -39,11 +39,11 @@ public class Datos {
 		return clientes.obtener(razonSocial);
 	}
 	
-//	public boolean grabarArticulo(Articulo articulo) {
+//	public boolean grabar(Articulo articulo) {
 //		return articulos.grabar(articulo, articulo.getNombre(), articulo.getIdArticulo());
 //	}
 //	
-//	public boolean borrarArticulo(Articulo articulo) {
+//	public boolean borrar(Articulo articulo) {
 //		boolean retorno=false;
 //		if(articulos.borrar(articulo.getNombre()))retorno=true;
 //		return retorno;
@@ -53,11 +53,11 @@ public class Datos {
 //		return articulos.obtener(nombreArticulo);
 //	}
 //	
-//	public boolean grabarPedido(Pedido pedido) {
+//	public boolean grabar(Pedido pedido) {
 //		return pedidos.grabar(String.valueOf(pedido.getNumero()), String.valueOf(pedido.getCliente().getDniCif()), pedido);
 //	}
 //	
-//	public boolean borrarPedido(Pedido pedido) {
+//	public boolean borrar(Pedido pedido) {
 //		boolean retorno=false;
 //		if(pedidos.borrar(pedido))retorno=true;
 //		return retorno;
@@ -66,6 +66,6 @@ public class Datos {
 //	public Pedido obtenerPedido(String nombrePedido,String nombreCliente) {
 //		return pedidos.obtener(nombreCliente, nombrePedido);
 //	}
-	
+//	
 	
 }

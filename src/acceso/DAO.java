@@ -43,8 +43,13 @@ public class DAO<T> {
 	public boolean grabar(String path, T t, boolean adicion) {
 		assert path != null && t != null;
 		boolean retorno = true;
+//		if(!new File(path.substring(0,path.lastIndexOf('/'))).exists()) {
+//			new File(path.substring(0,path.lastIndexOf('/'))).mkdirs();
+//			adicion = false;
+//		}
+		
+		boolean existe = new File(path).exists() && adicion;
 		File file = new File(path);
-		boolean existe = file.exists() && adicion;
 		FileOutputStream flujoW = abrir(path, adicion);
 		try {
 			ObjectOutputStream adaptador = null;
@@ -79,6 +84,9 @@ public class DAO<T> {
 	private FileOutputStream abrir(String path, boolean adicion) {
 		// no hay assert porque ya habria saltado en el public
 		FileOutputStream flujoW = null;
+		if(!new File(path.substring(0,path.lastIndexOf('/'))).exists()) {
+			new File(path.substring(0,path.lastIndexOf('/'))).mkdirs();
+		}
 		File file = new File(path);
 		try {
 			flujoW = new FileOutputStream(file, adicion);
