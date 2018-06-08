@@ -2,7 +2,7 @@ package modelo;
 
 import java.io.Serializable;
 
-public class Cliente implements Serializable,Comparable<Cliente>{
+public class Cliente implements Serializable,Comparable<Cliente>,Indexable{
 	private String dniCif;
 	private String razonSocial;
 	private String direccion;
@@ -63,5 +63,10 @@ public class Cliente implements Serializable,Comparable<Cliente>{
 	@Override
 	public int compareTo(Cliente cliente) {
 		return this.getRazonSocial().compareTo(cliente.getRazonSocial());
+	}
+
+	@Override
+	public String getClave() {
+		return razonSocial;
 	}
 }
