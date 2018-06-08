@@ -7,9 +7,7 @@ import java.io.File;
 import org.junit.After;
 import org.junit.Test;
 import facade.Datos;
-import modelo.Articulo;
 import modelo.Cliente;
-import modelo.Pedido;
 import utiles.Utiles;
 
 public class DatosTest {

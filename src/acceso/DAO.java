@@ -45,11 +45,9 @@ public class DAO<T> {
 		boolean retorno = true;
 //		if(!new File(path.substring(0,path.lastIndexOf('/'))).exists()) {
 //			new File(path.substring(0,path.lastIndexOf('/'))).mkdirs();
-//			adicion = false;
 //		}
 		
 		boolean existe = new File(path).exists() && adicion;
-		File file = new File(path);
 		FileOutputStream flujoW = abrir(path, adicion);
 		try {
 			ObjectOutputStream adaptador = null;
@@ -134,19 +132,19 @@ public class DAO<T> {
 	public boolean borrarElemtento(String pathDatos, Integer posicion) {
 		int i = 0;
 		boolean retorno=true;
+		String rutaCopia = new String(pathDatos.substring(0, pathDatos.lastIndexOf('/')+1)+"copia");
 		T t = leer(pathDatos, i);
 		while (t != null) {
-			if (i != posicion) {
-				grabar("copia", t, true);
+			if (i != posicion.intValue()) {
+				grabar(rutaCopia, t, true);
 			}
 			i++;
-			t = leer(pathDatos, 0);
+			t = leer(pathDatos, i);
 		}
 		File original=new File(pathDatos);
-		File copia=new File("copia");
-		if(original.delete()&&copia.renameTo(original)){
-			retorno=false;
-		}
+		File copia = new File (rutaCopia);
+		original.delete();
+		copia.renameTo(original);
 		return retorno;
 	}
 }

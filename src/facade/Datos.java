@@ -30,9 +30,7 @@ public class Datos {
 	}
 	
 	public boolean borrar(Cliente cliente) {
-		boolean retorno=false;
-		if(clientes.borrar(cliente.getRazonSocial()))retorno=true;
-		return retorno;
+		return clientes.borrar(cliente.getRazonSocial());
 	}
 	
 	public Cliente obtenerCliente(String razonSocial) {
