@@ -16,17 +16,7 @@ public class Logica {
 		this.validador = validador;
 		}
 
-	public Boolean darAltaArticulo(Articulo articulo) {
-		return datos.grabarArticulo(articulo);
-	}
 
-	public Articulo buscarArticulo() {
-		return null;
-	}
-
-	public Boolean modificarPrecio() {
-		return null;
-	}
 
 	public Boolean darAltaCliente(Cliente cliente) {
 		if(validador.validarCliente(cliente, datos.getClientes()))
@@ -71,6 +61,18 @@ public class Logica {
 	  }
 	return retorno;
 	  }
+  
+	public Boolean darAltaArticulo(Articulo articulo) {
+		return datos.grabarArticulo(articulo);
+	}
+
+	public Articulo buscarArticulo() {
+		return null;
+	}
+
+	public Boolean modificarPrecio() {
+		return null;
+	}
 
 	public ArrayList consultarHistorico() {
 		return null;

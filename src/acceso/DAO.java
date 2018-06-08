@@ -43,10 +43,10 @@ public class DAO<T> {
 	public boolean grabar(String path, T t, boolean adicion) {
 		assert path != null && t != null;
 		boolean retorno = true;
-//		if(!new File(path.substring(0,path.lastIndexOf('/'))).exists()) {
-//			new File(path.substring(0,path.lastIndexOf('/'))).mkdirs();
-//		}
-		
+		// if(!new File(path.substring(0,path.lastIndexOf('/'))).exists()) {
+		// new File(path.substring(0,path.lastIndexOf('/'))).mkdirs();
+		// }
+
 		boolean existe = new File(path).exists() && adicion;
 		FileOutputStream flujoW = abrir(path, adicion);
 		try {
@@ -82,8 +82,8 @@ public class DAO<T> {
 	private FileOutputStream abrir(String path, boolean adicion) {
 		// no hay assert porque ya habria saltado en el public
 		FileOutputStream flujoW = null;
-		if(!new File(path.substring(0,path.lastIndexOf('/'))).exists()) {
-			new File(path.substring(0,path.lastIndexOf('/'))).mkdirs();
+		if (!new File(path.substring(0, path.lastIndexOf('/'))).exists()) {
+			new File(path.substring(0, path.lastIndexOf('/'))).mkdirs();
 		}
 		File file = new File(path);
 		try {
@@ -131,8 +131,8 @@ public class DAO<T> {
 
 	public boolean borrarElemtento(String pathDatos, Integer posicion) {
 		int i = 0;
-		boolean retorno=true;
-		String rutaCopia = new String(pathDatos.substring(0, pathDatos.lastIndexOf('/')+1)+"copia");
+		boolean retorno = true;
+		String rutaCopia = new String(pathDatos.substring(0, pathDatos.lastIndexOf('/') + 1) + "copia");
 		T t = leer(pathDatos, i);
 		while (t != null) {
 			if (i != posicion.intValue()) {
@@ -141,8 +141,8 @@ public class DAO<T> {
 			i++;
 			t = leer(pathDatos, i);
 		}
-		File original=new File(pathDatos);
-		File copia = new File (rutaCopia);
+		File original = new File(pathDatos);
+		File copia = new File(rutaCopia);
 		original.delete();
 		copia.renameTo(original);
 		return retorno;
