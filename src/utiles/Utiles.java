@@ -10,8 +10,8 @@ import javax.swing.SwingUtilities;
 import control.Puente;
 
 public class Utiles {
-	public static final String RUTACLIENTE = "./data/clientes/";
-	public static final String RUTAINDICECLIENTES = "./data/clientesIndice/";
+	public static final String RUTACLIENTE = "./data/clientes/clientes.data";
+	public static final String RUTAINDICECLIENTES = "./data/clientesIndice/clientes.index";
 	public static final int CAMPOSCLIENTE = 4;
 	public static final String DATA = "data";
 	public static final String ARTICULOS = "articulos";

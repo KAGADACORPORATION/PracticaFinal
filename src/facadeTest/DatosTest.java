@@ -7,9 +7,7 @@ import java.io.File;
 import org.junit.After;
 import org.junit.Test;
 import facade.Datos;
-import modelo.Articulo;
 import modelo.Cliente;
-import modelo.Pedido;
 import utiles.Utiles;
 
 public class DatosTest {
@@ -26,36 +24,38 @@ public class DatosTest {
 	@After
 	public void tearDown() throws Exception {
 		Utiles.borrarCarpeta(new File("./data"));
+		new File("clientes.data").delete();
+		new File("Clientes.index").delete();
 	}
 	
 	
 	@Test
 	public void testGrabarCliente() {
-		assertTrue(instancia.grabarCliente(clienteUno));
+		assertTrue(instancia.grabar(clienteUno));
 		assertEquals(instancia.obtenerCliente(clienteUno.getRazonSocial()),clienteUno);
-		assertTrue(instancia.grabarCliente(clienteDos));
+		assertTrue(instancia.grabar(clienteDos));
 		assertEquals(instancia.obtenerCliente(clienteDos.getRazonSocial()),clienteDos);
 	}
 
-//	@Test
-//	public void testBorrarCliente() {
-//		assertTrue(instancia.grabarCliente(clienteUno));
-//		assertEquals(instancia.obtenerCliente(clienteUno.getRazonSocial()),clienteUno);
-//		assertTrue(instancia.grabarCliente(clienteDos));
-//		assertEquals(instancia.obtenerCliente(clienteDos.getRazonSocial()),clienteDos);
-//		assertTrue(instancia.borrarCliente(clienteUno));
-//		assertNull(instancia.obtenerCliente(clienteUno.getRazonSocial()));
-//		assertTrue(instancia.borrarCliente(clienteDos));
-//		assertNull(instancia.obtenerCliente(clienteDos.getRazonSocial()));
-//	}
-//
-//	@Test
-//	public void testObtenerCliente() {
-//		assertTrue(instancia.grabarCliente(clienteUno));
-//		assertEquals(instancia.obtenerCliente(clienteUno.getRazonSocial()),clienteUno);
-//		assertTrue(instancia.grabarCliente(clienteDos));
-//		assertEquals(instancia.obtenerCliente(clienteDos.getRazonSocial()),clienteDos);
-//	}
+	@Test
+	public void testBorrarCliente() {
+		assertTrue(instancia.grabar(clienteUno));
+		assertEquals(instancia.obtenerCliente(clienteUno.getRazonSocial()),clienteUno);
+		assertTrue(instancia.grabar(clienteDos));
+		assertEquals(instancia.obtenerCliente(clienteDos.getRazonSocial()),clienteDos);
+		assertTrue(instancia.borrar(clienteUno));
+		assertNull(instancia.obtenerCliente(clienteUno.getRazonSocial()));
+		assertTrue(instancia.borrar(clienteDos));
+		assertNull(instancia.obtenerCliente(clienteDos.getRazonSocial()));
+	}
+
+	@Test
+	public void testObtenerCliente() {
+		assertTrue(instancia.grabar(clienteUno));
+		assertEquals(instancia.obtenerCliente(clienteUno.getRazonSocial()),clienteUno);
+		assertTrue(instancia.grabar(clienteDos));
+		assertEquals(instancia.obtenerCliente(clienteDos.getRazonSocial()),clienteDos);
+	}
 
 ////	@Test
 //	public void testGrabarArticulo() {

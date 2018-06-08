@@ -1,6 +1,7 @@
 package almacenes;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
@@ -69,10 +70,11 @@ public class AlmacenIndice<T, K> {
 	}
 	
 	public boolean borrar(K k){
+		Integer posicion = null;
 		leerIndice();
 		boolean retorno=false;
 		if(indice.containsKey(k)){
-			Integer posicion=indice.remove(k);
+			posicion=indice.remove(k);
 			if(posicion!=null){
 				retorno=dao.borrarElemtento(pathDatos,posicion);
 				if(!retorno){
@@ -80,6 +82,13 @@ public class AlmacenIndice<T, K> {
 				}
 			}
 		}
+		actualizarIndice(posicion);
+		dao.grabar(pathIndice, indice);
 		return retorno;
+	}
+
+	private void actualizarIndice(Integer posicion) {
+		assert posicion != null;
+//		TODO to do
 	}
 }
