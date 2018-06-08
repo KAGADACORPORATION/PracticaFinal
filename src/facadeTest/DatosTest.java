@@ -14,6 +14,7 @@ public class DatosTest {
 	Datos instancia = new Datos();
 	Cliente clienteUno = new Cliente("1", "NombreUno", "calle falsa 2", "11111111P");
 	Cliente clienteDos = new Cliente("2", "NombreDos", "calle falsa 2", "22222222P");
+	Cliente clienteTres = new Cliente("3", "NombreTres", "calle falsa 3", "33333333P");
 //	Articulo articuloUno = new Articulo(0, "articuloUno", "descripcion y ...", 11);
 //	Articulo articuloDos = new Articulo(0, "articuloDos", "descripcionDos y ...", 22);
 //	Pedido pedidoUno = new Pedido(0, clienteUno);
@@ -24,8 +25,6 @@ public class DatosTest {
 	@After
 	public void tearDown() throws Exception {
 		Utiles.borrarCarpeta(new File("./data"));
-		new File("clientes.data").delete();
-		new File("Clientes.index").delete();
 	}
 	
 	
@@ -43,10 +42,15 @@ public class DatosTest {
 		assertEquals(instancia.obtenerCliente(clienteUno.getRazonSocial()),clienteUno);
 		assertTrue(instancia.grabar(clienteDos));
 		assertEquals(instancia.obtenerCliente(clienteDos.getRazonSocial()),clienteDos);
+		assertTrue(instancia.grabar(clienteTres));
+		assertEquals(instancia.obtenerCliente(clienteTres.getRazonSocial()),clienteTres);
 		assertTrue(instancia.borrar(clienteUno));
 		assertNull(instancia.obtenerCliente(clienteUno.getRazonSocial()));
+		assertEquals(instancia.obtenerCliente(clienteDos.getRazonSocial()),clienteDos);
 		assertTrue(instancia.borrar(clienteDos));
 		assertNull(instancia.obtenerCliente(clienteDos.getRazonSocial()));
+		assertTrue(instancia.borrar(clienteTres));
+		assertNull(instancia.obtenerCliente(clienteTres.getRazonSocial()));
 	}
 
 	@Test

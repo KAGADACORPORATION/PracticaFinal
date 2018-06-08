@@ -1,11 +1,13 @@
 package almacenes;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import acceso.DAO;
+import modelo.Indexable;
 
 public class AlmacenIndice<T, K> {
 	private String pathIndice;
@@ -82,13 +84,25 @@ public class AlmacenIndice<T, K> {
 				}
 			}
 		}
-		actualizarIndice(posicion);
+		actualizarIndiceDespuesDeBorrar(posicion);
 		dao.grabar(pathIndice, indice);
 		return retorno;
 	}
 
-	private void actualizarIndice(Integer posicion) {
+	private void actualizarIndiceDespuesDeBorrar(Integer posicion) {
 		assert posicion != null;
-//		TODO to do
+		for (int i = 0; i < indice.size(); i++) {
+			if(indice.get(getClave(i))>=posicion.intValue()) {
+				indice.replace((K) getClave(i), indice.get(getClave(i)), indice.get(getClave(i))-1);
+			}
+		}
+	}
+
+	/**
+	 * @param i
+	 * @return
+	 */
+	private String getClave(int i) {
+		return ((Indexable)dao.leer(pathDatos, i)).getClave();
 	}
 }
