@@ -19,8 +19,8 @@ public class Logica {
 
 
 	public Boolean darAltaCliente(Cliente cliente) {
-		if(validador.validarCliente(cliente, datos.getClientes()))
-		return datos.grabarCliente(cliente);
+		if(validador.validarCliente(cliente, datos.getArrayCliente()))
+		return datos.grabar(cliente);
 		else return false;
 	}
 
@@ -29,8 +29,8 @@ public class Logica {
 	}
 
   public Cliente buscarCliente(String nif) {
-	  for (int i = 0; i < datos.getClientes().size(); i++) {
-			Cliente clienteTemporal = datos.getClientes().get(i);
+	  for (int i = 0; i < datos.getArrayCliente().size(); i++) {
+			Cliente clienteTemporal = datos.getArrayCliente().get(i);
 			if(clienteTemporal.getDniCif().equals(nif)) {
 				return(clienteTemporal);
 			}
@@ -40,10 +40,10 @@ public class Logica {
 
   public boolean borrarClientePorNombre(String nombre) {
 	  boolean retorno = false;
-	  for (int i = 0; i < datos.getClientes().size(); i++) {
-		Cliente clienteTemporal = datos.getClientes().get(i);
+	  for (int i = 0; i < datos.getArrayCliente().size(); i++) {
+		Cliente clienteTemporal = datos.getArrayCliente().get(i);
 		if(clienteTemporal.getRazonSocial().equals(nombre)) {
-			datos.borrarCliente(clienteTemporal);
+			datos.borrar(clienteTemporal);
 			retorno = true;
 		}
 	  }
@@ -52,10 +52,10 @@ public class Logica {
   
   public Boolean borrarClientePorNif(String nif) {
 	  boolean retorno = false;
-	  for (int i = 0; i < datos.getClientes().size(); i++) {
-		Cliente clienteTemporal = datos.getClientes().get(i);
+	  for (int i = 0; i < datos.getArrayCliente().size(); i++) {
+		Cliente clienteTemporal = datos.getArrayCliente().get(i);
 		if(clienteTemporal.getDniCif().equals(nif)) {
-			datos.borrarCliente(clienteTemporal);
+			datos.borrar(clienteTemporal);
 			retorno = true;
 		}
 	  }
@@ -63,7 +63,7 @@ public class Logica {
 	  }
   
 	public Boolean darAltaArticulo(Articulo articulo) {
-		return datos.grabarArticulo(articulo);
+		return datos.grabar(articulo);
 	}
 
 	public Articulo buscarArticulo() {

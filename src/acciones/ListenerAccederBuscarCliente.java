@@ -9,7 +9,6 @@ import javax.swing.table.DefaultTableModel;
 
 import control.Puente;
 import modelo.Cliente;
-import modelo.acceso.ListenerBuscarMouse;
 import utiles.Utiles;
 import vista.VistaEjecutarBuscarCliente;
 
@@ -28,18 +27,17 @@ public class ListenerAccederBuscarCliente implements ActionListener {
 		puente.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
 		puente.getContentPane().add(puente.getVistaEjecutarBuscarCliente());
 		VistaEjecutarBuscarCliente vista = puente.getVistaEjecutarBuscarCliente();
-		ArrayList<Cliente> clientes = this.puente.getLogica().getDatos().getClientes();
+		ArrayList<Cliente> clientes = this.puente.getLogica().getDatos().getArrayCliente();
 		while (this.puente.getModeloTabla().getRowCount() > 0) {
 			this.puente.getModeloTabla().removeRow(0);
 
 		}
 		for (int i = 0; i < clientes.size(); i++) {
-			Cliente clienteAux = this.puente.getLogica().getDatos().getClientes().get(i);
+			Cliente clienteAux = this.puente.getLogica().getDatos().getArrayCliente().get(i);
 			String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getDniCif(), clienteAux.getDireccion(),
 					clienteAux.getTelefono() };
 			// addrow al default
 			this.puente.getModeloTabla().addRow(adicion);
-			Utiles.actualizar(puente);
 		}
 		vista.getTable().addMouseListener(new ListenerMouseTablaCliente(puente));
 		Utiles.actualizar(puente);
