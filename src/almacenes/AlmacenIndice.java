@@ -105,4 +105,17 @@ public class AlmacenIndice<T, K> {
 	private String getClave(int i) {
 		return ((Indexable)dao.leer(pathDatos, i)).getClave();
 	}
+
+	public TreeMap<K, Integer> getIndice() {
+		leerIndice();
+		return indice;
+	}
+
+	public void setIndice(TreeMap<K, Integer> indice) {
+		this.indice = indice;
+	}
+
+	public DAO<Object> getDao() {
+		return dao;
+	}
 }

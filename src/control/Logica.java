@@ -1,11 +1,13 @@
 package control;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import facade.Datos;
 import modelo.Articulo;
 import modelo.Cliente;
 import modelo.Pedido;
+import utiles.Utiles;
 
 public class Logica {
 	private Datos datos;
@@ -19,52 +21,42 @@ public class Logica {
 
 
 	public Boolean darAltaCliente(Cliente cliente) {
-		if(validador.validarCliente(cliente, datos.getArrayCliente()))
+		if(validador.validarCliente(cliente))
 		return datos.grabar(cliente);
 		else return false;
 	}
 
-	public Cliente buscarCliente() {
-		return null;
-	}
+    public Cliente obtenerCliente(String nombre) {
+	    return datos.obtenerCliente(nombre);
+    }
 
-  public Cliente buscarCliente(String nif) {
-	  for (int i = 0; i < datos.getArrayCliente().size(); i++) {
-			Cliente clienteTemporal = datos.getArrayCliente().get(i);
-			if(clienteTemporal.getDniCif().equals(nif)) {
-				return(clienteTemporal);
-			}
-		  }
-	  return null;
-  }
-
-  public boolean borrarClientePorNombre(String nombre) {
-	  boolean retorno = false;
-	  for (int i = 0; i < datos.getArrayCliente().size(); i++) {
-		Cliente clienteTemporal = datos.getArrayCliente().get(i);
-		if(clienteTemporal.getRazonSocial().equals(nombre)) {
-			datos.borrar(clienteTemporal);
-			retorno = true;
-		}
-	  }
-	return retorno;
-  }
-  
-  public Boolean borrarClientePorNif(String nif) {
-	  boolean retorno = false;
-	  for (int i = 0; i < datos.getArrayCliente().size(); i++) {
-		Cliente clienteTemporal = datos.getArrayCliente().get(i);
-		if(clienteTemporal.getDniCif().equals(nif)) {
-			datos.borrar(clienteTemporal);
-			retorno = true;
-		}
-	  }
-	return retorno;
-	  }
-  
-	public Boolean darAltaArticulo(Articulo articulo) {
-		return datos.grabar(articulo);
-	}
+//  public boolean borrarClientePorNombre(String nombre) {
+//	  boolean retorno = false;
+//	  for (int i = 0; i < datos.getArrayCliente().size(); i++) {
+//		Cliente clienteTemporal = datos.getArrayCliente().get(i);
+//		if(clienteTemporal.getRazonSocial().equals(nombre)) {
+//			datos.borrar(clienteTemporal);
+//			retorno = true;
+//		}
+//	  }
+//	return retorno;
+//  }
+//  
+//  public Boolean borrarClientePorNif(String nif) {
+//	  boolean retorno = false;
+//	  for (int i = 0; i < datos.getArrayCliente().size(); i++) {
+//		Cliente clienteTemporal = datos.getArrayCliente().get(i);
+//		if(clienteTemporal.getDniCif().equals(nif)) {
+//			datos.borrar(clienteTemporal);
+//			retorno = true;
+//		}
+//	  }
+//	return retorno;
+//	  }
+//  
+//	public Boolean darAltaArticulo(Articulo articulo) {
+//		return datos.grabar(articulo);
+//	}
 
 	public Articulo buscarArticulo() {
 		return null;
@@ -93,15 +85,24 @@ public class Logica {
 	}
 
 
+	public Datos getDatos() {
+		return datos;
+	}
+	
+	public int getIndiceSize() {
+		return getDatos().getClientes().getIndice().size();
+	}
 
-public Datos getDatos() {
-	return datos;
-}
+
+
+	public  TreeMap<String, Integer> getIndice() {
+		return getDatos().getClientes().getIndice();
+	}
 
 
 
-public void setDatos(Datos datos) {
-	this.datos = datos;
-}
+	public Object obtenerCliente(int i) {
+		return datos.getClientes().getDao().leer(Utiles.RUTACLIENTE, i);
+	}
 
 }

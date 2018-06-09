@@ -40,7 +40,7 @@ public class Datos {
 	public AlmacenIndice<Cliente, String> getClientes() {
 		return clientes;
 	}
-	
+
 //	public boolean grabar(Articulo articulo) {
 //		return articulos.grabar(articulo, articulo.getNombre(), articulo.getIdArticulo());
 //	}

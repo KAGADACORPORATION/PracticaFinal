@@ -42,14 +42,14 @@ public class Validador {
 		return retorno;
 	}
 
-	public boolean validarCliente(Cliente cliente, ArrayList<Cliente> clientes) {
+	public boolean validarCliente(Cliente cliente) {
 		boolean retorno = true;
 		VistaEjecutarAltaCliente vista = puente.getVistaAccederAltaCliente().getVistaEjecutarAltaCliente();
 		if (comprobarVacioCliente(cliente)) {
 			vista.getLblComprobacion().setText("ERROR CAMPO VACIO");
 			retorno = false;
 		}
-		if (comprobarSiExiste(cliente, clientes)) {
+		if (comprobarSiExiste(cliente)){
 			vista.getLblComprobacion().setText("ERROR EL CLIENTE YA EXISTE");
 			retorno = false;
 		}
@@ -70,14 +70,6 @@ public class Validador {
 		return retorno;
 	}
 
-	private boolean comprobarSiExiste(Cliente cliente, ArrayList<Cliente> clientes) {
-		boolean retorno = false;
-		for (Cliente clienteTemporal : clientes) {
-			if (clienteTemporal.equals(cliente))
-				retorno = true;
-		}
-		return retorno;
-	}
 
 	public boolean validarPedido() {
 		return true;
@@ -147,32 +139,7 @@ public class Validador {
 	}
 
 	private boolean comprobarSiExiste(Cliente cliente) {
-		boolean retorno = false;
-		FileInputStream flujoR = null;
-		ObjectInputStream adaptadorR = null;
-		Cliente clienteTemporal;
-		try {
-			File file = new File("./data/clientes.data");
-			flujoR = new FileInputStream(file);
-			adaptadorR = new ObjectInputStream(flujoR);
-			clienteTemporal = (Cliente) adaptadorR.readObject();
-			while (clienteTemporal != null) {
-				if (cliente.equals(clienteTemporal))
-					retorno = true;
-				clienteTemporal = (Cliente) adaptadorR.readObject();
-			}
-
-		} catch (IOException | ClassNotFoundException e) {
-			System.out.println("fin de lectura comprobacion si cliente existe en alta");
-		}
-
-		try {
-			adaptadorR.close();
-			flujoR.close();
-		} catch (IOException e) {
-			System.out.println("flujo cerrado");
-		}
-		return retorno;
+		return puente.getLogica().getDatos().obtenerCliente(cliente.getClave()) != null;
 	}
 
 	private boolean comprobarNombreNoNumeros(String razonSocial) {
