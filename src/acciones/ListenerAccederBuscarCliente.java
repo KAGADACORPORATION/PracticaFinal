@@ -28,6 +28,7 @@ public class ListenerAccederBuscarCliente implements ActionListener {
 		puente.getContentPane().removeAll();
 		puente.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
 		puente.getContentPane().add(puente.getVistaEjecutarBuscarCliente());
+		Utiles.actualizar(puente);
 		Utiles.ActualizarTablaCliente(puente);
 	}
 
