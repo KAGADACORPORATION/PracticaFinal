@@ -31,16 +31,16 @@ public class AlmacenRutaDestinoTest {
 	@Test
 	public void test() {
 		Pedido pedido=new Pedido(1, cliente);
-		assertTrue(instancia.grabar(cliente.getDniCif(), String.valueOf(pedido.getNumero()), pedido));
-		assertEquals(pedido.getNumero(), instancia.obtener(cliente.getDniCif(), String.valueOf(pedido.getNumero())).getNumero());
+		assertTrue(instancia.grabar(cliente.getClave(), String.valueOf(pedido.getNumero()), pedido));
+		assertEquals(pedido.getNumero(), instancia.obtener(cliente.getClave(), String.valueOf(pedido.getNumero())).getNumero());
 		pedido=new Pedido(2, cliente);
-		assertTrue(instancia.grabar(cliente.getDniCif(), String.valueOf(pedido.getNumero()), pedido));
-		assertEquals(pedido.getNumero(), instancia.obtener(cliente.getDniCif(), String.valueOf(pedido.getNumero())).getNumero());
+		assertTrue(instancia.grabar(cliente.getClave(), String.valueOf(pedido.getNumero()), pedido));
+		assertEquals(pedido.getNumero(), instancia.obtener(cliente.getClave(), String.valueOf(pedido.getNumero())).getNumero());
 		pedido=new Pedido(3, cliente);
-		assertTrue(instancia.grabar(cliente.getDniCif(), String.valueOf(pedido.getNumero()), pedido));
-		assertEquals(pedido.getNumero(), instancia.obtener(cliente.getDniCif(), String.valueOf(pedido.getNumero())).getNumero());
-		assertNotEquals(7, instancia.obtener(cliente.getDniCif(), String.valueOf(pedido.getNumero())).getNumero());
-		assertNull(instancia.obtener(cliente.getDniCif(), String.valueOf(7)));
+		assertTrue(instancia.grabar(cliente.getClave(), String.valueOf(pedido.getNumero()), pedido));
+		assertEquals(pedido.getNumero(), instancia.obtener(cliente.getClave(), String.valueOf(pedido.getNumero())).getNumero());
+		assertNotEquals(7, instancia.obtener(cliente.getClave(), String.valueOf(pedido.getNumero())).getNumero());
+		assertNull(instancia.obtener(cliente.getClave(), String.valueOf(7)));
 		}
 
 }

@@ -88,7 +88,8 @@ public class Logica {
 
 
 	public  TreeMap<String, Integer> getIndice() {
-		return getDatos().getClientes().getIndice();
+		if(getDatos().getClientes().getIndice()!=null)return getDatos().getClientes().getIndice();
+		else return new TreeMap<String,Integer>();
 	}
 
 

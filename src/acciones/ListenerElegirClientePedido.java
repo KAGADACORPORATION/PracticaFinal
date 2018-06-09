@@ -33,7 +33,7 @@ public class ListenerElegirClientePedido implements ActionListener {
 		}
 		for (int i = 0; i < clientes.size(); i++) {
 			Cliente clienteAux = this.puente.getLogica().getDatos().getArrayCliente().get(i);
-			String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getDniCif(), clienteAux.getDireccion(),
+			String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getClave(), clienteAux.getDireccion(),
 					clienteAux.getTelefono() };
 			// addrow al default
 			this.puente.getModeloTabla().addRow(adicion);

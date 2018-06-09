@@ -32,10 +32,6 @@ public class Cliente implements Serializable,Comparable<Cliente>,Indexable{
 		this.telefono = telefono;
 	}
 
-	public String getDniCif() {
-		return dniCif;
-	}
-
 	public String getRazonSocial() {
 		return razonSocial;
 	}
@@ -45,11 +41,13 @@ public class Cliente implements Serializable,Comparable<Cliente>,Indexable{
 		Cliente cliente = (Cliente) obj;
 		boolean retorno = super.equals(obj);
 		if(!retorno){
-			retorno = this.dniCif.equals(cliente.dniCif);
+			retorno = this.razonSocial.equals(cliente.razonSocial);
 		}
 		return retorno;
 	}
 
+	
+	
 	@Override
 	public int hashCode() {
 		return dniCif.hashCode();
@@ -67,6 +65,10 @@ public class Cliente implements Serializable,Comparable<Cliente>,Indexable{
 
 	@Override
 	public String getClave() {
-		return razonSocial;
+		return this.razonSocial;
+	}
+
+	public String getDniCif() {
+		return dniCif;
 	}
 }

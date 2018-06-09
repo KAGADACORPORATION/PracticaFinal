@@ -107,7 +107,7 @@ public class Validador {
 	}
 
 	private boolean comprobarVacioCliente(Cliente cliente) {
-		if (cliente.getDniCif().isEmpty() || cliente.getRazonSocial().isEmpty() || cliente.getDireccion().isEmpty()
+		if (cliente.getClave().isEmpty() || cliente.getRazonSocial().isEmpty() || cliente.getDireccion().isEmpty()
 				|| cliente.getTelefono().isEmpty()) {
 			return true;
 		} else
@@ -139,7 +139,8 @@ public class Validador {
 	}
 
 	private boolean comprobarSiExiste(Cliente cliente) {
-		return puente.getLogica().getDatos().obtenerCliente(cliente.getClave()) != null;
+		if( puente.getLogica().obtenerCliente(cliente.getRazonSocial()) != null)return true;
+		else return false;
 	}
 
 	private boolean comprobarNombreNoNumeros(String razonSocial) {
