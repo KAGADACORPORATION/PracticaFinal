@@ -3,6 +3,8 @@ package acciones;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.TreeMap;
 
 import control.Logica;
 import control.Puente;
@@ -26,18 +28,32 @@ public class BuscarClienteKey implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		VistaEjecutarBuscarCliente vista = puente.getVistaAccederBuscarCliente().getVistaEjecutarBuscarCliente();
 		cadena = vista.getTextField().getText();
-		while (this.puente.getModeloTabla().getRowCount() > 0) {
-			this.puente.getModeloTabla().removeRow(0);
-		}
+		limpiarTabla();
+		llenarTabla();
+	}
 
-		ArrayList<Cliente> clientes = this.puente.getLogica().getDatos().getArrayCliente();
-		for (int i = 0; i < clientes.size(); i++) {
-			Cliente clienteAux = this.puente.getLogica().getDatos().getArrayCliente().get(i);
-			String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getDniCif(), clienteAux.getDireccion(),
-					clienteAux.getTelefono() };
-			if (adicion[0].toLowerCase().startsWith(cadena.toString())) {
+	
+	/**
+	 * 
+	 */
+	private void llenarTabla() {
+		TreeMap<String, Integer> indiceClientes = puente.getLogica().getIndice();
+		for (int i = 0; i < indiceClientes.size(); i++) {
+			Cliente clienteAux = (Cliente) this.puente.getLogica().obtenerCliente(i);
+			if(clienteAux.getRazonSocial().toLowerCase().startsWith(cadena)) {
+				String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getDniCif(), clienteAux.getDireccion(),
+						clienteAux.getTelefono() };
 				this.puente.getModeloTabla().addRow(adicion);
 			}
+		}
+	}
+
+	/**
+	 * 
+	 */
+	private void limpiarTabla() {
+		while (this.puente.getModeloTabla().getRowCount() > 0) {
+			this.puente.getModeloTabla().removeRow(0);
 		}
 	}
 
