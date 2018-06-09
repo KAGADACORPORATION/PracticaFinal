@@ -82,9 +82,9 @@ public class DAO<T> {
 	private FileOutputStream abrir(String path, boolean adicion) {
 		// no hay assert porque ya habria saltado en el public
 		FileOutputStream flujoW = null;
-		if (!new File(path.substring(0, path.lastIndexOf('/'))).exists()) {
-			new File(path.substring(0, path.lastIndexOf('/'))).mkdirs();
-		}
+//		if (!new File(path.substring(0, path.lastIndexOf('/'))).exists()) {
+//			new File(path.substring(0, path.lastIndexOf('/'))).mkdirs();
+//		}
 		File file = new File(path);
 		try {
 			flujoW = new FileOutputStream(file, adicion);

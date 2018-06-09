@@ -21,7 +21,7 @@ import utiles.Utiles;
 public class Datos {
 	private AlmacenIndice<Cliente, String> clientes;
 	// private almacenRutaMapeada<Articulo, String> articulos;
-	// private AlmacenRutaDestino<Pedido> pedidos;
+	 private AlmacenRutaDestino<Pedido> pedidos;
 	private ArrayList<Cliente> arrayCliente;
 
 	public Datos() {
@@ -31,7 +31,7 @@ public class Datos {
 		// this.articulos = new almacenRutaMapeada<>(new AlmacenMap<>(new
 		// TreeMap<String, Integer>(), Utiles.ARTICULO_MAP), Utiles.ART,
 		// Utiles.ARTICULOS, Utiles.DATA);
-		// this.pedidos = new AlmacenRutaDestino<>(Utiles.PEDIDORUTA, "ped");
+		 this.pedidos = new AlmacenRutaDestino<>(Utiles.PEDIDORUTA, "ped");
 		clientesToArrayList();
 	}
 
@@ -91,20 +91,20 @@ public class Datos {
 	// return articulos.obtener(nombreArticulo);
 	// }
 	//
-	// public boolean grabar(Pedido pedido) {
-	// return pedidos.grabar(String.valueOf(pedido.getNumero()),
-	// String.valueOf(pedido.getCliente().getDniCif()), pedido);
-	// }
-	//
-	// public boolean borrar(Pedido pedido) {
-	// boolean retorno=false;
-	// if(pedidos.borrar(pedido))retorno=true;
-	// return retorno;
-	// }
-	//
-	// public Pedido obtenerPedido(String nombrePedido,String nombreCliente) {
-	// return pedidos.obtener(nombreCliente, nombrePedido);
-	// }
+	 public boolean grabar(Pedido pedido) {
+	 return pedidos.grabar(String.valueOf(pedido.getNumero()),
+	 String.valueOf(pedido.getCliente().getDniCif()), pedido);
+	 }
+	
+	 public boolean borrar(Pedido pedido) {
+	 boolean retorno=false;
+	 if(pedidos.borrar(pedido))retorno=true;
+	 return retorno;
+	 }
+	
+	 public Pedido obtenerPedido(String nombrePedido,String nombreCliente) {
+	 return pedidos.obtener(nombreCliente, nombrePedido);
+	 }
 	//
 
 }
