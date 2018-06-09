@@ -30,9 +30,9 @@ public class BuscarClienteKey implements KeyListener {
 			this.puente.getModeloTabla().removeRow(0);
 		}
 
-		ArrayList<Cliente> clientes = this.puente.getLogica().getDatos().getClientes();
+		ArrayList<Cliente> clientes = this.puente.getLogica().getDatos().getArrayCliente();
 		for (int i = 0; i < clientes.size(); i++) {
-			Cliente clienteAux = this.puente.getLogica().getDatos().getClientes().get(i);
+			Cliente clienteAux = this.puente.getLogica().getDatos().getArrayCliente().get(i);
 			String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getDniCif(), clienteAux.getDireccion(),
 					clienteAux.getTelefono() };
 			if (adicion[0].toLowerCase().startsWith(cadena.toString())) {

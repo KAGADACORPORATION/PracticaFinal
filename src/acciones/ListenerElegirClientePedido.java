@@ -27,12 +27,12 @@ public class ListenerElegirClientePedido implements ActionListener {
 		ventana.getContentPane().add(puente.getVistaEjecutarBuscarCliente());
 		VistaEjecutarBuscarCliente vista = puente.getVistaAccederBuscarCliente().getVistaEjecutarBuscarCliente();
 
-		ArrayList<Cliente> clientes = this.puente.getLogica().getDatos().getClientes();
+		ArrayList<Cliente> clientes = this.puente.getLogica().getDatos().getArrayCliente();
 		while (this.puente.getModeloTabla().getRowCount() > 0) {
 			this.puente.getModeloTabla().removeRow(0);
 		}
 		for (int i = 0; i < clientes.size(); i++) {
-			Cliente clienteAux = this.puente.getLogica().getDatos().getClientes().get(i);
+			Cliente clienteAux = this.puente.getLogica().getDatos().getArrayCliente().get(i);
 			String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getDniCif(), clienteAux.getDireccion(),
 					clienteAux.getTelefono() };
 			// addrow al default

@@ -1,5 +1,10 @@
 package facade;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 import javax.rmi.CORBA.Util;
@@ -15,59 +20,91 @@ import utiles.Utiles;
 
 public class Datos {
 	private AlmacenIndice<Cliente, String> clientes;
-//	private almacenRutaMapeada<Articulo, String> articulos;
-//	private AlmacenRutaDestino<Pedido> pedidos;
-	
+	// private almacenRutaMapeada<Articulo, String> articulos;
+	// private AlmacenRutaDestino<Pedido> pedidos;
+	private ArrayList<Cliente> arrayCliente;
+
 	public Datos() {
 		super();
-		this.clientes = new AlmacenIndice<>(Utiles.RUTAINDICECLIENTES,Utiles.RUTACLIENTE);
-//		this.articulos = new almacenRutaMapeada<>(new AlmacenMap<>(new TreeMap<String, Integer>(), Utiles.ARTICULO_MAP), Utiles.ART, Utiles.ARTICULOS, Utiles.DATA);
-//		this.pedidos = new AlmacenRutaDestino<>(Utiles.PEDIDORUTA, "ped");
+		this.clientes = new AlmacenIndice<>(Utiles.RUTAINDICECLIENTES, Utiles.RUTACLIENTE);
+		arrayCliente = new ArrayList<>();
+		// this.articulos = new almacenRutaMapeada<>(new AlmacenMap<>(new
+		// TreeMap<String, Integer>(), Utiles.ARTICULO_MAP), Utiles.ART,
+		// Utiles.ARTICULOS, Utiles.DATA);
+		// this.pedidos = new AlmacenRutaDestino<>(Utiles.PEDIDORUTA, "ped");
+		clientesToArrayList();
 	}
-	
+
 	public boolean grabar(Cliente cliente) {
 		return clientes.grabar(cliente, cliente.getRazonSocial());
 	}
-	
+
 	public boolean borrar(Cliente cliente) {
 		return clientes.borrar(cliente.getRazonSocial());
 	}
-	
+
 	public Cliente obtenerCliente(String razonSocial) {
 		return clientes.obtener(razonSocial);
 	}
 
 	public AlmacenIndice<Cliente, String> getClientes() {
+
 		return clientes;
 	}
-	
-//	public boolean grabar(Articulo articulo) {
-//		return articulos.grabar(articulo, articulo.getNombre(), articulo.getIdArticulo());
-//	}
-//	
-//	public boolean borrar(Articulo articulo) {
-//		boolean retorno=false;
-//		if(articulos.borrar(articulo.getNombre()))retorno=true;
-//		return retorno;
-//	}
-//	
-//	public Articulo obtenerArticulo(String nombreArticulo) {
-//		return articulos.obtener(nombreArticulo);
-//	}
-//	
-//	public boolean grabar(Pedido pedido) {
-//		return pedidos.grabar(String.valueOf(pedido.getNumero()), String.valueOf(pedido.getCliente().getDniCif()), pedido);
-//	}
-//	
-//	public boolean borrar(Pedido pedido) {
-//		boolean retorno=false;
-//		if(pedidos.borrar(pedido))retorno=true;
-//		return retorno;
-//	}
-//	
-//	public Pedido obtenerPedido(String nombrePedido,String nombreCliente) {
-//		return pedidos.obtener(nombreCliente, nombrePedido);
-//	}
-//	
-	
+
+	public ArrayList<Cliente> getArrayCliente() {
+		return arrayCliente;
+	}
+
+	public ArrayList<Cliente> clientesToArrayList() {
+		FileInputStream flujoR = null;
+		ObjectInputStream adaptadorR = null;
+		try {
+			File file = new File(Utiles.RUTACLIENTE);
+			flujoR = new FileInputStream(file);
+			adaptadorR = new ObjectInputStream(flujoR);
+			Cliente cliente = (Cliente) adaptadorR.readObject();
+			while (cliente != null) {
+				arrayCliente.add(cliente);
+				cliente = (Cliente) adaptadorR.readObject();
+			}
+			adaptadorR.close();
+			flujoR.close();
+		} catch (IOException | ClassNotFoundException e) {
+			System.out.println("clientes copiados a datos");
+		}
+		return arrayCliente;
+	}
+
+	// public boolean grabar(Articulo articulo) {
+	// return articulos.grabar(articulo, articulo.getNombre(),
+	// articulo.getIdArticulo());
+	// }
+	//
+	// public boolean borrar(Articulo articulo) {
+	// boolean retorno=false;
+	// if(articulos.borrar(articulo.getNombre()))retorno=true;
+	// return retorno;
+	// }
+	//
+	// public Articulo obtenerArticulo(String nombreArticulo) {
+	// return articulos.obtener(nombreArticulo);
+	// }
+	//
+	// public boolean grabar(Pedido pedido) {
+	// return pedidos.grabar(String.valueOf(pedido.getNumero()),
+	// String.valueOf(pedido.getCliente().getDniCif()), pedido);
+	// }
+	//
+	// public boolean borrar(Pedido pedido) {
+	// boolean retorno=false;
+	// if(pedidos.borrar(pedido))retorno=true;
+	// return retorno;
+	// }
+	//
+	// public Pedido obtenerPedido(String nombrePedido,String nombreCliente) {
+	// return pedidos.obtener(nombreCliente, nombrePedido);
+	// }
+	//
+
 }
