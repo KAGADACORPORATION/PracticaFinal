@@ -1,5 +1,6 @@
 package utiles;
 
+import java.awt.Container;
 import java.awt.Image;
 import java.io.File;
 import java.util.TreeMap;
@@ -33,8 +34,8 @@ public class Utiles {
 		int numeroAleatorio=((int)(Math.random()*((max-min)+1)))+min;
 		return numeroAleatorio;
 	}
-	public static void actualizar(Puente puente){
-  		SwingUtilities.updateComponentTreeUI(puente);
+	public static void actualizar(Container container){
+  		SwingUtilities.updateComponentTreeUI(container);
   	}
 	public static void borrarCarpeta(File carpetaGenerada) {
 	    if (carpetaGenerada.isDirectory()) { 
@@ -60,6 +61,10 @@ public class Utiles {
 			}
 		}
 		vista.getTable().addMouseListener(new ListenerMouseTablaCliente(puente));
-		Utiles.actualizar(puente);
+		Utiles.actualizar(puente.getVistaEjecutarBuscarCliente().getTable().getParent());
+	}
+
+	public static void actualizar(JPanel panel) {
+	  	SwingUtilities.updateComponentTreeUI(panel);
 	}
 }
