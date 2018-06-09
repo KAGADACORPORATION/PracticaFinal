@@ -30,17 +30,9 @@ public class Logica {
 	    return datos.obtenerCliente(nombre);
     }
 
-//  public boolean borrarClientePorNombre(String nombre) {
-//	  boolean retorno = false;
-//	  for (int i = 0; i < datos.getArrayCliente().size(); i++) {
-//		Cliente clienteTemporal = datos.getArrayCliente().get(i);
-//		if(clienteTemporal.getRazonSocial().equals(nombre)) {
-//			datos.borrar(clienteTemporal);
-//			retorno = true;
-//		}
-//	  }
-//	return retorno;
-//  }
+  public boolean borrarClientePorNombre(String nombre) {
+	  return datos.borrar(obtenerCliente(nombre));
+  }
 //  
 //  public Boolean borrarClientePorNif(String nif) {
 //	  boolean retorno = false;
