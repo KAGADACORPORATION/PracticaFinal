@@ -32,6 +32,7 @@ public class AlmacenIndice<T, K> {
 		leerIndice();
 		if (indice == null) {
 			indice = new TreeMap<>();
+			generarCarpetasSiNo();
 			dao.grabar(pathIndice, indice);
 		}
 		T retorno = null;
@@ -54,6 +55,7 @@ public class AlmacenIndice<T, K> {
 	public boolean grabar(T t, K k) {
 		boolean retorno = false;
 		Integer value = indice.size();
+		generarCarpetasSiNo();
 		if (indice.put(k, value) == null) {
 			// si se almacena bien en el archivo de datos
 			if (dao.grabar(pathDatos, t, true)) {
@@ -65,6 +67,16 @@ public class AlmacenIndice<T, K> {
 			}
 		}
 		return retorno;
+	}
+
+	/**
+	 * 
+	 */
+	private void generarCarpetasSiNo() {
+		if(!new File(pathDatos).exists()) {
+			new File(pathDatos.substring(0,pathDatos.lastIndexOf('/'))).mkdirs();
+			new File(pathIndice.substring(0,pathIndice.lastIndexOf('/'))).mkdirs();
+		}
 	}
 
 	private void leerIndice() {
