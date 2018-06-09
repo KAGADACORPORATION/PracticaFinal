@@ -28,29 +28,21 @@ public class ListenerAccederBuscarCliente implements ActionListener {
 		puente.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
 		puente.getContentPane().add(puente.getVistaEjecutarBuscarCliente());
 		VistaEjecutarBuscarCliente vista = puente.getVistaEjecutarBuscarCliente();
-		vaciaTabla();
-		int posicion = 0;
-		TreeMap<String, Integer> indiceCliente = puente.getLogica().getDatos().getClientes().getIndice();
-		while(posicion<indiceCliente.size()) {
-			Cliente clienteAux = this.puente.getLogica().getDatos().obtenerCliente(String.valueOf(indiceCliente.remove(indiceCliente.firstKey())));
-			String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getDniCif(), clienteAux.getDireccion(),
-					clienteAux.getTelefono() };
-			// addrow al default
-			this.puente.getModeloTabla().addRow(adicion);
-			posicion++;
+		while (this.puente.getModeloTabla().getRowCount() > 0) {
+			this.puente.getModeloTabla().removeRow(0);
+		}
+		TreeMap<String, Integer> indiceClientes = puente.getLogica().getIndice();
+		for (int i = 0; i < indiceClientes.size(); i++) {
+			Cliente clienteAux = (Cliente) this.puente.getLogica().obtenerCliente(i);
+			if(clienteAux.getRazonSocial().toLowerCase().startsWith("")) {
+				String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getDniCif(), clienteAux.getDireccion(),
+						clienteAux.getTelefono() };
+				this.puente.getModeloTabla().addRow(adicion);
+			}
 		}
 		vista.getTable().addMouseListener(new ListenerMouseTablaCliente(puente));
 		Utiles.actualizar(puente);
 
-	}
-
-	/**
-	 * 
-	 */
-	private void vaciaTabla() {
-		while (this.puente.getModeloTabla().getRowCount() > 0) {
-			this.puente.getModeloTabla().removeRow(0);
-		}
 	}
 
 	public VistaEjecutarBuscarCliente getVistaEjecutarBuscarCliente() {
