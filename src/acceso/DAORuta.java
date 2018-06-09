@@ -22,11 +22,11 @@ public class DAORuta<T> {
 		}
 		File archivo=new File(obtenerPath(pathPadre, claveElemento));
 		if(!archivo.exists()){
-			retorno = new DAO<>().grabar(archivo.getPath(), t);
+			retorno = new DAO<>().grabar(obtenerPath(pathPadre, claveElemento), t);
 		}
 		return retorno;
 	}
 	private String obtenerPath(String clavePadre, String claveElemento) {
-		return "./"+clavePadre+"/"+claveElemento;
+		return clavePadre+claveElemento;
 	};
 }
