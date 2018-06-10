@@ -40,6 +40,9 @@ public class Logica {
 		return datos.grabar(articulo);
 	}
 
+	public Articulo obtenerArticulo(Articulo articulo) {
+		return datos.obtenerArticulo(articulo.getNombre());
+	}
 	public Articulo buscarArticulo() {
 		return null;
 	}

@@ -23,14 +23,17 @@ public class AddLinea implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent arg0) {	
 		VistaEjecutarAltaPedido vista = puente.getVistaEjecutarAltaPedido();
 		Logica logica = puente.getLogica();
-		logica.setPedidoTemporal(new Pedido(getIdPedido(), logica.getClienteTemporal()));
-		pedido = logica.getPedidoTemporal();
-
-		Linea linea = new Linea((Articulo) ,
-				Integer.valueOf(vista.getTextCantidad().getText()));
+		if (logica.getPedidoTemporal()== null) {
+			logica.setPedidoTemporal(new Pedido(getIdPedido(), logica.getClienteTemporal()));
+			pedido=logica.getPedidoTemporal();
+		} else {
+			pedido = logica.getPedidoTemporal();
+		}
+		Articulo articulo=new Articulo(99, "cama", "mu buena", 150);
+		Linea linea = new Linea(articulo, Integer.valueOf(vista.getTextCantidad().getText()));
 		if (puente.getValidador().validarLineaPedido(linea)) {
 			pedido.insertarLinea(linea);
 			vista.getLblMensaje().setText("linea añadida");
