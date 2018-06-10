@@ -4,26 +4,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
-
 import control.Puente;
+import vista.VistaEjecutarBuscarArticulo;
 import vista.VistaEjecutarBuscarCliente;
 
-public class ListenerMouseTablaCliente implements MouseListener {
+public class ListenerMouseTablaArticulos implements MouseListener {
 	Puente puente;
 	String[] adicion;
 
-	public ListenerMouseTablaCliente(Puente puente) {
+	public ListenerMouseTablaArticulos(Puente puente) {
 		super();
 		this.puente = puente;
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		VistaEjecutarBuscarCliente vista = puente.getVistaEjecutarBuscarCliente();
+		VistaEjecutarBuscarArticulo vista = puente.getVistaEjecutarBuscarArticulo();
 		JTable tabla = vista.getTable();
 		if (e.getButton() == MouseEvent.BUTTON3) {
 			int r = tabla.rowAtPoint(e.getPoint());
@@ -74,5 +73,4 @@ public class ListenerMouseTablaCliente implements MouseListener {
 		// TODO Auto-generated method stub
 
 	}
-
 }
