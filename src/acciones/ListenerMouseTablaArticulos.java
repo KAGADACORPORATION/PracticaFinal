@@ -45,7 +45,6 @@ public class ListenerMouseTablaArticulos implements MouseListener {
 	private void doPop(MouseEvent e, final JTable table, final int row) {
 		PopUpTabla menu = new PopUpTabla();
 		menu.addOption.addActionListener(new ListenerAddOptionPopUpArticulo(puente, row));
-		//menu.borrarOption.addActionListener(new BorrarCliente(puente, row));
 		menu.show(e.getComponent(), e.getX(), e.getY());
 
 	}
