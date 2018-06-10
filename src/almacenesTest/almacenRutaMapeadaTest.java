@@ -16,7 +16,7 @@ public class almacenRutaMapeadaTest {
 	private static final String DATA = "data";
 	private static final String ARTICULOS = "articulos";
 	private static final String ART = "art";
-	private static final String ARTICULO_MAP = "articulo.map";
+	private static final String ARTICULO_MAP = "/data/articulos/articulo.map";
 	almacenRutaMapeada<Articulo, String> instamcia;
 
 	@Before

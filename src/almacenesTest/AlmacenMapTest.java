@@ -11,7 +11,7 @@ import modelo.Cliente;
 import utiles.Utiles;
 
 public class AlmacenMapTest {
-	private static final String MAPA_MAP = "mapa.map";
+	private static final String MAPA_MAP = "./data/clientes/mapa.map";
 	AlmacenMap<String, Cliente> mapa=new AlmacenMap<>(new TreeMap<>(), MAPA_MAP);
 	Cliente Cliente=new Cliente("1","uno", "calle 123", "912912912");
 	Cliente Cliente2=new Cliente("1","dos", "calle 123", "912912912");
