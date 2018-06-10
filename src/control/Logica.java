@@ -29,19 +29,20 @@ public class Logica {
 	public Cliente obtenerCliente(String nombre) {
 		return datos.obtenerCliente(nombre);
 	}
-  
+
 	public boolean borrarClientePorNombre(String nombre) {
 		return datos.borrar(obtenerCliente(nombre));
 	}
-  
+
 	public boolean darAlta(Articulo articulo) {
 
 		return datos.grabar(articulo);
 	}
 
-	public Articulo obtenerArticulo(Articulo articulo) {
-		return datos.obtenerArticulo(articulo.getNombre());
+	public Articulo obtenerArticulo(String nombre) {
+		return datos.obtenerArticulo(nombre);
 	}
+
 	public Articulo buscarArticulo() {
 		return null;
 	}
@@ -76,9 +77,11 @@ public class Logica {
 		return getDatos().getClientes().getIndice().size();
 	}
 
-	public  TreeMap<String, Integer> getIndice() {
-		if(getDatos().getClientes().getIndice()!=null)return getDatos().getClientes().getIndice();
-		else return new TreeMap<String,Integer>();
+	public TreeMap<String, Integer> getIndice() {
+		if (getDatos().getClientes().getIndice() != null)
+			return getDatos().getClientes().getIndice();
+		else
+			return new TreeMap<String, Integer>();
 
 	}
 
@@ -99,8 +102,8 @@ public class Logica {
 
 	}
 
-  private Cliente clienteTemporal;
-  
+	private Cliente clienteTemporal;
+
 	public void setClienteTemporal(Cliente cliente) {
 		this.clienteTemporal = cliente;
 	}
@@ -112,6 +115,7 @@ public class Logica {
 	public boolean darAlta(Cliente cliente) {
 		return datos.grabar(cliente);
 	}
+
 	private JFrame ventanaAnadirClienteAPedido;
 
 	public void setFrame(JFrame ventana) {
@@ -127,6 +131,14 @@ public class Logica {
 		return datos.getCantidadArticulos();
 	}
 
-	
+	private Articulo articuloTemporal;
+
+	public void setArticuloTemporal(Articulo articulo) {
+		this.articuloTemporal = articulo;
+	}
+
+	public Articulo getArticuloTemporal() {
+		return articuloTemporal;
+	}
 
 }

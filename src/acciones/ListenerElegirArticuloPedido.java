@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import control.Puente;
 import modelo.Cliente;
 import utiles.Utiles;
+import vista.VistaEjecutarBuscarArticulo;
 import vista.VistaEjecutarBuscarCliente;
 
 public class ListenerElegirArticuloPedido implements ActionListener {
@@ -24,10 +25,10 @@ public class ListenerElegirArticuloPedido implements ActionListener {
 		JFrame ventana = new JFrame();
 		ventana.setBounds(500, 500, 670, 413);
 		ventana.getContentPane().removeAll();
-		ventana.getContentPane().add(puente.getVistaEjecutarBuscarCliente());
-		VistaEjecutarBuscarCliente vista = puente.getVistaAccederBuscarCliente().getVistaEjecutarBuscarCliente();
-		Utiles.ActualizarTablaCliente(puente);	
-		vista.getTable().addMouseListener(new ListenerMouseTablaCliente(puente));
+		ventana.getContentPane().add(puente.getVistaEjecutarBuscarArticulo());
+		VistaEjecutarBuscarArticulo vista = puente.getVistaEjecutarBuscarArticulo();
+		Utiles.ActualizarTablaArticulos(puente);	
+		vista.getTable().addMouseListener(new ListenerMouseTablaArticulos(puente));
 		Utiles.actualizar(puente);
 		ventana.setVisible(true);
 		puente.getLogica().setFrame(ventana);

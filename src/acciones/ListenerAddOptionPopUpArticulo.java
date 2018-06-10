@@ -7,6 +7,7 @@ import javax.swing.JTable;
 
 import control.Puente;
 import vista.VistaEjecutarAltaPedido;
+import vista.VistaEjecutarBuscarArticulo;
 import vista.VistaEjecutarBuscarCliente;
 
 public class ListenerAddOptionPopUpArticulo implements ActionListener{
@@ -21,14 +22,14 @@ public class ListenerAddOptionPopUpArticulo implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		VistaEjecutarBuscarCliente vistaBuscar = puente.getVistaEjecutarBuscarCliente();
+		VistaEjecutarBuscarArticulo vistaBuscar = puente.getVistaEjecutarBuscarArticulo();
 		VistaEjecutarAltaPedido vistaPedido = puente.getVistaEjecutarAltaPedido();
 		JTable tabla=vistaBuscar.getTable();
-		puente.getLogica().setClienteTemporal(puente.getLogica().obtenerCliente(tabla.getValueAt(row, 0).toString()));
-		System.out.println("Nombre: "+tabla.getValueAt(row, 0));
-        System.out.println("DNI: "+tabla.getValueAt(row, 1));
-        System.out.println("Direccion: "+tabla.getValueAt(row, 2));
-        System.out.println("Telefono: "+tabla.getValueAt(row, 3));
+		puente.getLogica().setArticuloTemporal(puente.getLogica().obtenerArticulo(tabla.getValueAt(row, 0).toString()));
+		System.out.println("ID: "+tabla.getValueAt(row, 0));
+        System.out.println("Nombre: "+tabla.getValueAt(row, 1));
+        System.out.println("Descripcion: "+tabla.getValueAt(row, 2));
+        System.out.println("Precio: "+tabla.getValueAt(row, 3));
         vistaPedido.getButtonBuscarCliente().setText(tabla.getValueAt(row, 0).toString());
         puente.getLogica().getFrame().setVisible(false);
 	}
