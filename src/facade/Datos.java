@@ -42,18 +42,18 @@ public class Datos {
 	}
 
 	 public boolean grabar(Articulo articulo) {
-	 return articulos.grabar(articulo, articulo.getNombre(),
-	 articulo.getIdArticulo());
+		 return articulos.grabar(articulo, articulo.getNombre(),
+		 articulo.getIdArticulo());
 	 }
 	
 	 public boolean borrar(Articulo articulo) {
-	 boolean retorno=false;
-	 if(articulos.borrar(articulo.getNombre()))retorno=true;
-	 return retorno;
+		 boolean retorno=false;
+		 if(articulos.borrar(articulo.getNombre()))retorno=true;
+		 return retorno;
 	 }
 	
 	 public Articulo obtenerArticulo(String nombreArticulo) {
-	 return articulos.obtener(nombreArticulo);
+		 return articulos.obtener(nombreArticulo);
 	 }
 	
 	public boolean grabar(Pedido pedido) {

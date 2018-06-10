@@ -20,11 +20,6 @@ public class Logica {
 
 
 
-	public Boolean darAltaCliente(Cliente cliente) {
-		if(validador.validarCliente(cliente))
-		return datos.grabar(cliente);
-		else return false;
-	}
 
     public Cliente obtenerCliente(String nombre) {
 	    return datos.obtenerCliente(nombre);
@@ -34,7 +29,7 @@ public class Logica {
 	  return datos.borrar(obtenerCliente(nombre));
   }
   
-	public Boolean darAltaArticulo(Articulo articulo) {
+	public boolean darAlta(Articulo articulo) {
 		return datos.grabar(articulo);
 	}
 
@@ -42,16 +37,16 @@ public class Logica {
 		return null;
 	}
 
-	public Boolean modificarPrecio() {
-		return null;
+	public boolean modificarPrecio() {
+		return false;
 	}
 
 	public ArrayList consultarHistorico() {
 		return null;
 	}
 
-	public Boolean insertarLineaPedido() {
-		return null;
+	public boolean insertarLineaPedido() {
+		return false;
 	}
 
 	private Pedido pedidoTemporal;
@@ -73,32 +68,24 @@ public class Logica {
 		return getDatos().getClientes().getIndice().size();
 	}
 
-
-
 	public  TreeMap<String, Integer> getIndice() {
 		if(getDatos().getClientes().getIndice()!=null)return getDatos().getClientes().getIndice();
 		else return new TreeMap<String,Integer>();
 	}
 
-
-
 	public Object obtenerCliente(int i) {
 		return datos.getClientes().getDao().leer(Utiles.RUTACLIENTE, i);
 	}
-
-
 
 	public boolean grabarPedido(Pedido pedido) {
 		if(validador.validarPedido(pedido))
 			return datos.grabar(pedido);
 			else return false;
-		
 	}
+	
 	public Pedido obtenerPedido(Pedido pedido) {
 			return datos.obtenerPedido(String.valueOf(pedido.getNumero()), pedido.getCliente().getDniCif());
-		
 	}
-
 
 	Cliente clienteTemporal;
 	public void setClienteTemporal(Cliente cliente) {
@@ -107,6 +94,10 @@ public class Logica {
 
 	public Cliente getClienteTemporal() {
 		return this.clienteTemporal;
+	}
+
+	public boolean darAlta(Cliente cliente) {
+		return datos.grabar(cliente);
 	}
 
 }
