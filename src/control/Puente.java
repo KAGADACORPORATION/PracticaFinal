@@ -15,9 +15,11 @@ import acciones.ListenerArticulo;
 import acciones.ListenerPedido;
 import acciones.RegistrarArticulo;
 import acciones.ListenerCliente;
+import acciones.ListenerElegirArticuloPedido;
 import acciones.RegistrarPedido;
 import vista.VistaPrincipal;
 import acciones.ListenerElegirClientePedido;
+import acciones.ListenerMouseTablaArticulos;
 
 public class Puente extends VistaPrincipal {
 
@@ -46,8 +48,11 @@ public class Puente extends VistaPrincipal {
 		this.mntmBuscarPedido.addActionListener(new ListenerAccederBuscarPedido(this));
 		this.mntmNuevoPedido.addActionListener(new ListenerAccederAltaPedido(this));
 		
-		this.panelPedido.getBotonPedido().addActionListener(new RegistrarPedido(this));
 		this.getVistaEjecutarAltaPedido().getButtonBuscarCliente().addActionListener(new ListenerElegirClientePedido(this));
+		this.getVistaEjecutarAltaPedido().getButtonBucarArticulo().addActionListener(new ListenerElegirArticuloPedido(this));
+		this.getVistaEjecutarAltaPedido().getButtonAddLinea().addActionListener(new AddLinea(this));
+		this.getVistaEjecutarAltaPedido().getBtnConfirmarPedido().addActionListener(new RegistrarPedido(this));
+		
 		
 	}
 

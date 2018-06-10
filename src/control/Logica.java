@@ -3,6 +3,8 @@ package control;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import javax.swing.JFrame;
+
 import facade.Datos;
 import modelo.Articulo;
 import modelo.Cliente;
@@ -12,24 +14,34 @@ import utiles.Utiles;
 public class Logica {
 	private Datos datos;
 	private Validador validador;
-		public Logica(Validador validador) {
+
+	public Logica(Validador validador) {
 		super();
 		this.datos = new Datos();
 		this.validador = validador;
-		}
+	}
 
+	public Boolean darAltaCliente(Cliente cliente) {
+		if (validador.validarCliente(cliente))
+			return datos.grabar(cliente);
+		else
+			return false;
+	}
 
-
-
-    public Cliente obtenerCliente(String nombre) {
-	    return datos.obtenerCliente(nombre);
-    }
+	public Cliente obtenerCliente(String nombre) {
+		return datos.obtenerCliente(nombre);
+	}
+  
+	public boolean borrarClientePorNombre(String nombre) {
+		return datos.borrar(obtenerCliente(nombre));
+	}
 
   public boolean borrarClientePorNombre(String nombre) {
 	  return datos.borrar(obtenerCliente(nombre));
   }
   
 	public boolean darAlta(Articulo articulo) {
+
 		return datos.grabar(articulo);
 	}
 
@@ -59,11 +71,10 @@ public class Logica {
 		this.pedidoTemporal = pedido;
 	}
 
-
 	public Datos getDatos() {
 		return datos;
 	}
-	
+
 	public int getIndiceSize() {
 		return getDatos().getClientes().getIndice().size();
 	}
@@ -71,6 +82,7 @@ public class Logica {
 	public  TreeMap<String, Integer> getIndice() {
 		if(getDatos().getClientes().getIndice()!=null)return getDatos().getClientes().getIndice();
 		else return new TreeMap<String,Integer>();
+
 	}
 
 	public Object obtenerCliente(int i) {
@@ -78,18 +90,22 @@ public class Logica {
 	}
 
 	public boolean grabarPedido(Pedido pedido) {
-		if(validador.validarPedido(pedido))
+		if (validador.validarPedido(pedido))
 			return datos.grabar(pedido);
-			else return false;
-	}
-	
-	public Pedido obtenerPedido(Pedido pedido) {
-			return datos.obtenerPedido(String.valueOf(pedido.getNumero()), pedido.getCliente().getDniCif());
+
+		else
+			return false;
 	}
 
-	Cliente clienteTemporal;
+	public Pedido obtenerPedido(Pedido pedido) {
+		return datos.obtenerPedido(String.valueOf(pedido.getNumero()), pedido.getCliente().getDniCif());
+
+	}
+
+  private Cliente clienteTemporal;
+  
 	public void setClienteTemporal(Cliente cliente) {
-		this.clienteTemporal=cliente;
+		this.clienteTemporal = cliente;
 	}
 
 	public Cliente getClienteTemporal() {
@@ -98,6 +114,16 @@ public class Logica {
 
 	public boolean darAlta(Cliente cliente) {
 		return datos.grabar(cliente);
+
+	private JFrame ventanaAñadirClienteAPedido;
+
+	public void setFrame(JFrame ventana) {
+		this.ventanaAñadirClienteAPedido = ventana;
+
+	}
+
+	public JFrame getFrame() {
+		return ventanaAñadirClienteAPedido;
 	}
 
 }

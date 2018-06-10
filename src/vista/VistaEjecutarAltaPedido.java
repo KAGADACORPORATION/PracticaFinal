@@ -28,6 +28,7 @@ public class VistaEjecutarAltaPedido extends JPanel {
 	private JLabel lblMensaje;
 	private JButton buttonBuscarCliente;
 	private JButton buttonBucarArticulo;
+	private JLabel lblPrecioUnidad;
 
 	public VistaEjecutarAltaPedido() {
 		setLayout(new BorderLayout(0, 0));
@@ -41,9 +42,9 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 0, 0, 25, 0, 0, 0, 0, 0 };
-		gbl_panel.rowHeights = new int[] { 30, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_panel.rowHeights = new int[] { 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		gbl_panel.columnWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
 
 		JLabel lblCliente = new JLabel("N\u00FAmero identificaci\u00F3n:");
@@ -70,7 +71,7 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 2;
 		panel.add(lblNewLabel, gbc_lblNewLabel);
-		
+
 		buttonBuscarCliente = new JButton("...");
 		GridBagConstraints gbc_buttonBuscarCliente = new GridBagConstraints();
 		gbc_buttonBuscarCliente.insets = new Insets(0, 0, 5, 5);
@@ -85,7 +86,7 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		gbc_lblArtculo.gridx = 1;
 		gbc_lblArtculo.gridy = 4;
 		panel.add(lblArtculo, gbc_lblArtculo);
-		
+
 		buttonBucarArticulo = new JButton("...");
 		GridBagConstraints gbc_buttonBucarArticulo = new GridBagConstraints();
 		gbc_buttonBucarArticulo.insets = new Insets(0, 0, 5, 5);
@@ -97,7 +98,7 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		GridBagConstraints gbc_lblCantidad = new GridBagConstraints();
 		gbc_lblCantidad.anchor = GridBagConstraints.EAST;
 		gbc_lblCantidad.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCantidad.gridx = 4;
+		gbc_lblCantidad.gridx = 3;
 		gbc_lblCantidad.gridy = 4;
 		panel.add(lblCantidad, gbc_lblCantidad);
 
@@ -105,19 +106,12 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		GridBagConstraints gbc_textCantidad = new GridBagConstraints();
 		gbc_textCantidad.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textCantidad.insets = new Insets(0, 0, 5, 5);
-		gbc_textCantidad.gridx = 5;
+		gbc_textCantidad.gridx = 4;
 		gbc_textCantidad.gridy = 4;
 		panel.add(textCantidad, gbc_textCantidad);
 		textCantidad.setColumns(10);
 
-		btnAddLinea = new JButton("A\u00F1adir");
-		GridBagConstraints gbc_btnAadir = new GridBagConstraints();
-		gbc_btnAadir.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAadir.gridx = 4;
-		gbc_btnAadir.gridy = 5;
-		panel.add(btnAddLinea, gbc_btnAadir);
-
-		JLabel lblPrecio = new JLabel("Precio");
+		JLabel lblPrecio = new JLabel("Precio Unidad:");
 		GridBagConstraints gbc_lblPrecio = new GridBagConstraints();
 		gbc_lblPrecio.anchor = GridBagConstraints.EAST;
 		gbc_lblPrecio.insets = new Insets(0, 0, 5, 5);
@@ -125,25 +119,36 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		gbc_lblPrecio.gridy = 6;
 		panel.add(lblPrecio, gbc_lblPrecio);
 
-		JLabel precioTotal = new JLabel("100$");
-		GridBagConstraints gbc_precioTotal = new GridBagConstraints();
-		gbc_precioTotal.insets = new Insets(0, 0, 5, 5);
-		gbc_precioTotal.gridx = 2;
-		gbc_precioTotal.gridy = 6;
-		panel.add(precioTotal, gbc_precioTotal);
+		lblPrecioUnidad = new JLabel("");
+		GridBagConstraints gbc_lblPrecioUnidad = new GridBagConstraints();
+		gbc_lblPrecioUnidad.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPrecioUnidad.gridx = 2;
+		gbc_lblPrecioUnidad.gridy = 6;
+		panel.add(lblPrecioUnidad, gbc_lblPrecioUnidad);
+
+		btnAddLinea = new JButton("A\u00F1adir Linea");
+		GridBagConstraints gbc_btnAadir = new GridBagConstraints();
+		gbc_btnAadir.insets = new Insets(0, 0, 5, 5);
+		gbc_btnAadir.gridx = 4;
+		gbc_btnAadir.gridy = 6;
+		panel.add(btnAddLinea, gbc_btnAadir);
 
 		btnConfirmarPedido = new JButton("Confirmar Pedido");
 		GridBagConstraints gbc_btnConfirmarPedido = new GridBagConstraints();
 		gbc_btnConfirmarPedido.insets = new Insets(0, 0, 0, 5);
 		gbc_btnConfirmarPedido.gridx = 3;
-		gbc_btnConfirmarPedido.gridy = 8;
+		gbc_btnConfirmarPedido.gridy = 9;
 		panel.add(btnConfirmarPedido, gbc_btnConfirmarPedido);
 
-		lblMensaje = new JLabel("Guardado con \u00E9xito");
+		lblMensaje = new JLabel("");
 		lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMensaje.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblMensaje.setForeground(Color.GREEN);
 		add(lblMensaje, BorderLayout.SOUTH);
+	}
+
+	public JLabel getLblPrecioUnidad() {
+		return lblPrecioUnidad;
 	}
 
 	public JButton getButtonBuscarCliente() {
@@ -162,7 +167,7 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		return textIdentificacion;
 	}
 
-	public JButton getBtnAddLinea() {
+	public JButton getButtonAddLinea() {
 		return btnAddLinea;
 	}
 
