@@ -22,6 +22,7 @@ public class ListenerAddOptionPopUp implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		VistaEjecutarBuscarCliente vista = puente.getVistaAccederBuscarCliente().getVistaEjecutarBuscarCliente();
 		JTable tabla=vista.getTable();
+		puente.getLogica().setClienteTemporal(puente.getLogica().obtenerCliente(tabla.getValueAt(row, 0).toString()));
 		System.out.println("Nombre: "+tabla.getValueAt(row, 0));
         System.out.println("DNI: "+tabla.getValueAt(row, 1));
         System.out.println("Direccion: "+tabla.getValueAt(row, 2));

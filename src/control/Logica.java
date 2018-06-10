@@ -97,4 +97,27 @@ public class Logica {
 		return datos.getClientes().getDao().leer(Utiles.RUTACLIENTE, i);
 	}
 
+
+
+	public boolean grabarPedido(Pedido pedido) {
+		if(validador.validarPedido(pedido))
+			return datos.grabar(pedido);
+			else return false;
+		
+	}
+	public Pedido obtenerPedido(Pedido pedido) {
+			return datos.obtenerPedido(String.valueOf(pedido.getNumero()), pedido.getCliente().getDniCif());
+		
+	}
+
+
+	Cliente clienteTemporal;
+	public void setClienteTemporal(Cliente cliente) {
+		this.clienteTemporal=cliente;
+	}
+
+	public Cliente getClienteTemporal() {
+		return this.clienteTemporal;
+	}
+
 }

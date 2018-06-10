@@ -27,21 +27,19 @@ public class AddLinea implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		VistaEjecutarAltaPedido vista = puente.getVistaAccederAltaPedido().getVistaEjecutarAltaPedido();
-
 		Logica logica = puente.getLogica();
-		logica.setPedidoTemporal(new Pedido(getIdPedido(), (Cliente) vista.getComboBoxCliente().getSelectedItem()));
+		logica.setPedidoTemporal(new Pedido(getIdPedido(), logica.getClienteTemporal()));
 		pedido = logica.getPedidoTemporal();
 
 		Linea linea = new Linea((Articulo) vista.getComboBoxArticulo().getSelectedItem(),
 				Integer.valueOf(vista.getTextCantidad().getText()));
-		pedido.insertarLinea(linea);
-		vista.getLblMensaje().setText("linea añadida");
-		// else {
-		// vista.getLblMensaje().setText("error al crear");
-		
+		if (puente.getValidador().validarLineaPedido(linea)) {
+			pedido.insertarLinea(linea);
+			vista.getLblMensaje().setText("linea añadida");
+		} else {
+			vista.getLblMensaje().setText("error");
+		}
 		logica.setPedidoTemporal(pedido);
-		System.out.println(linea);
-
 	}
 
 	private int idPedido = 0;
