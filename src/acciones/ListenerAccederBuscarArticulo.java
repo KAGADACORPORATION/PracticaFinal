@@ -11,6 +11,7 @@ import control.Puente;
 import utiles.Utiles;
 
 public class ListenerAccederBuscarArticulo implements ActionListener {
+	
 	private Puente puente;
 
 	public ListenerAccederBuscarArticulo(Puente puente) {
@@ -24,6 +25,8 @@ public class ListenerAccederBuscarArticulo implements ActionListener {
 		puente.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
 		puente.getContentPane().add(puente.getVistaEjecutarBuscarArticulo());
 		Utiles.actualizar(puente);
+		Utiles.ActualizarTablaArticulos(puente);
+		
 
 	}
 

@@ -22,6 +22,7 @@ public class ListenerAccederBuscarPedido implements ActionListener {
 		puente.getContentPane().removeAll();
 		puente.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
 		puente.getContentPane().add(puente.getVistaAccederPedido().getVistaEjecutarBuscarPedido());
+//		Utiles.ActualizarTablaPedidos(puente);
 		Utiles.actualizar(puente);
 	}
 
