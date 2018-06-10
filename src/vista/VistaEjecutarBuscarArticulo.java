@@ -24,10 +24,10 @@ public class VistaEjecutarBuscarArticulo extends JPanel {
 	private JTextField textDescripcionBuscarArticulo;
 	private JTextField textPrecioBuscarArticulo;
 	private JTable table;
-	private String[] nombresColumnas = { "Nombre" };
+	private String[] nombresColumnas = { "ID", "Nombre","Desccipcion", "Precio"};
 	private String data[][];
 	private JLabel lblBuscarArticulo;
-	private DefaultTableModel modeloTablaArticulo=new DefaultTableModel(data,nombresColumnas);
+	private DefaultTableModel modeloTablaArticulo = new DefaultTableModel(data, nombresColumnas);
 
 	public VistaEjecutarBuscarArticulo() {
 		setBackground(SystemColor.activeCaption);
@@ -136,6 +136,5 @@ public class VistaEjecutarBuscarArticulo extends JPanel {
 	public JTable getTable() {
 		return table;
 	}
-	
 
 }
