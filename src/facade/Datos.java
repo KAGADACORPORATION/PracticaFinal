@@ -68,4 +68,13 @@ public class Datos {
 	public Pedido obtenerPedido(String nombrePedido, String nombreCliente) {
 		return pedidos.obtener(nombreCliente, nombrePedido);
 	}
+
+	public almacenRutaMapeada<Articulo, String> getArticulos() {
+		return articulos;
+	}
+
+	public int getCantidadArticulos() {
+		return articulos.getCantidadArticulos();
+	}
+	
 }

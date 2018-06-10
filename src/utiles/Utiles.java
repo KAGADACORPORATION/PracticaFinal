@@ -9,9 +9,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import acciones.ListenerMouseTablaArticulos;
 import acciones.ListenerMouseTablaCliente;
 import control.Puente;
+import modelo.Articulo;
 import modelo.Cliente;
+import vista.VistaEjecutarBuscarArticulo;
 import vista.VistaEjecutarBuscarCliente;
 
 public class Utiles {
@@ -63,7 +66,27 @@ public class Utiles {
 		vista.getTable().addMouseListener(new ListenerMouseTablaCliente(puente));
 		Utiles.actualizar(puente.getVistaEjecutarBuscarCliente().getTable().getParent());
 	}
+	
+	public static void ActualizarTablaArticulos(Puente puente) {
+		VistaEjecutarBuscarArticulo vista = puente.getVistaEjecutarBuscarArticulo();
+		cadena = vista.getTextBuscarBuscarArticulo().getText();
+		while (puente.getModeloTablaArticulo().getRowCount() > 0) {
+			puente.getModeloTablaArticulo().removeRow(0);
+		}
+		for (int i = 0; i < puente.getLogica().getCantidadArticulos(); i++) {
+			Articulo articuloAux = (Articulo) puente.getLogica().obtenerCliente(i);
+			if(articuloAux.getNombre().toLowerCase().startsWith(cadena)) {
+				String adicion[] = { String.valueOf(articuloAux.getIdArticulo()), articuloAux.getNombre(), articuloAux.getDescripcion(),
+						String.valueOf(articuloAux.getCurrentPrice())};
+				puente.getModeloTablaArticulo().addRow(adicion);
+			}
+		}
+		vista.getTable().addMouseListener(new ListenerMouseTablaArticulos(puente));
+		Utiles.actualizar(puente.getVistaEjecutarBuscarArticulo().getTable().getParent());
+	}
 
+	
+	
 	public static void actualizar(JPanel panel) {
 	  	SwingUtilities.updateComponentTreeUI(panel);
 	}

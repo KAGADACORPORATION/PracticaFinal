@@ -2,9 +2,7 @@ package control;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
-
 import javax.swing.JFrame;
-
 import facade.Datos;
 import modelo.Articulo;
 import modelo.Cliente;
@@ -35,10 +33,6 @@ public class Logica {
 	public boolean borrarClientePorNombre(String nombre) {
 		return datos.borrar(obtenerCliente(nombre));
 	}
-
-  public boolean borrarClientePorNombre(String nombre) {
-	  return datos.borrar(obtenerCliente(nombre));
-  }
   
 	public boolean darAlta(Articulo articulo) {
 
@@ -117,16 +111,22 @@ public class Logica {
 
 	public boolean darAlta(Cliente cliente) {
 		return datos.grabar(cliente);
-
-	private JFrame ventanaAñadirClienteAPedido;
+	}
+	private JFrame ventanaAnadirClienteAPedido;
 
 	public void setFrame(JFrame ventana) {
-		this.ventanaAñadirClienteAPedido = ventana;
+		this.ventanaAnadirClienteAPedido = ventana;
 
 	}
 
 	public JFrame getFrame() {
-		return ventanaAñadirClienteAPedido;
+		return ventanaAnadirClienteAPedido;
 	}
+
+	public int getCantidadArticulos() {
+		return datos.getCantidadArticulos();
+	}
+
+	
 
 }

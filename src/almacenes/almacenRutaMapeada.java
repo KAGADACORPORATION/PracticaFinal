@@ -1,6 +1,9 @@
 package almacenes;
 
 import java.io.File;
+import java.util.TreeMap;
+
+import acceso.DAO;
 import acceso.DAORuta;
 
 public class almacenRutaMapeada<T, K> {
@@ -60,5 +63,8 @@ public class almacenRutaMapeada<T, K> {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	public int getCantidadArticulos() {
+		return mapa.getSize();
+	}
+	
 }

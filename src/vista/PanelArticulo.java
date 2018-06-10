@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Font;
 
 public class PanelArticulo extends JPanel {
@@ -87,5 +89,9 @@ public class PanelArticulo extends JPanel {
 
 	public JButton getBotonAltaArticulo() {
 		return vistaAccederAltaArticulo.getBotonAltaArticulo();
+	}
+
+	public DefaultTableModel getModeloTablaArticulo() {
+		return vistaAccederBuscarArticulo.getModeloTablaArticulo();
 	}
 }

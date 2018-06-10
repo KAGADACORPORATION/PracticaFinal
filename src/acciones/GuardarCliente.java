@@ -29,7 +29,5 @@ public class GuardarCliente implements ActionListener {
 			vista.getLblComprobacion().setText("cliente creado");
 		}
 		Utiles.actualizar(puente);
-		// else {
-		// vista.getLblComprobacion().setText("error al crear");
 	}
 }
