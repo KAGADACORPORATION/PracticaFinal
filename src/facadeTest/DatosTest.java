@@ -7,6 +7,7 @@ import java.io.File;
 import org.junit.After;
 import org.junit.Test;
 import facade.Datos;
+import modelo.Articulo;
 import modelo.Cliente;
 import utiles.Utiles;
 
@@ -15,8 +16,8 @@ public class DatosTest {
 	Cliente clienteUno = new Cliente("1", "NombreUno", "calle falsa 2", "11111111P");
 	Cliente clienteDos = new Cliente("2", "NombreDos", "calle falsa 2", "22222222P");
 	Cliente clienteTres = new Cliente("3", "NombreTres", "calle falsa 3", "33333333P");
-//	Articulo articuloUno = new Articulo(0, "articuloUno", "descripcion y ...", 11);
-//	Articulo articuloDos = new Articulo(0, "articuloDos", "descripcionDos y ...", 22);
+	Articulo articuloUno = new Articulo(0, "articuloUno", "descripcion y ...", 11);
+	Articulo articuloDos = new Articulo(1, "articuloDos", "descripcionDos y ...", 22);
 //	Pedido pedidoUno = new Pedido(0, clienteUno);
 //	Pedido pedidoDos = new Pedido(1, clienteUno);
 //	Pedido pedidoTres = new Pedido(2, clienteDos);
@@ -61,33 +62,33 @@ public class DatosTest {
 		assertEquals(instancia.obtenerCliente(clienteDos.getRazonSocial()),clienteDos);
 	}
 
-////	@Test
-//	public void testGrabarArticulo() {
-//		assertTrue(instancia.grabarArticulo(articuloUno));
-//		assertEquals(instancia.obtenerArticulo(articuloUno.getNombre()),articuloUno);
-//		assertTrue(instancia.grabarArticulo(articuloDos));
-//		assertEquals(instancia.obtenerArticulo(articuloDos.getNombre()),articuloDos);
-//	}
-//
-////	@Test
-//	public void testBorrarArticulo() {
-//		assertTrue(instancia.grabarArticulo(articuloUno));
-//		assertEquals(instancia.obtenerArticulo(articuloUno.getNombre()),articuloUno);
-//		assertTrue(instancia.grabarArticulo(articuloDos));
-//		assertEquals(instancia.obtenerArticulo(articuloDos.getNombre()),articuloDos);
-//		assertTrue(instancia.borrarArticulo(articuloUno));
+	@Test
+	public void testGrabarArticulo() {
+		assertTrue(instancia.grabar(articuloUno));
+		assertEquals(instancia.obtenerArticulo(articuloUno.getNombre()),articuloUno);
+		assertTrue(instancia.grabar(articuloDos));
+		assertEquals(instancia.obtenerArticulo(articuloDos.getNombre()),articuloDos);
+	}
+
+	@Test
+	public void testBorrarArticulo() {
+		assertTrue(instancia.grabar(articuloUno));
+		assertEquals(instancia.obtenerArticulo(articuloUno.getNombre()),articuloUno);
+		assertTrue(instancia.grabar(articuloDos));
+		assertEquals(instancia.obtenerArticulo(articuloDos.getNombre()),articuloDos);
+//		assertTrue(instancia.borrar(articuloUno));
 //		assertNull(instancia.obtenerArticulo(articuloUno.getNombre()));
-//		assertTrue(instancia.borrarArticulo(articuloDos));
+//		assertTrue(instancia.borrar(articuloDos));
 //		assertNull(instancia.obtenerArticulo(articuloDos.getNombre()));
-//	}
-//
-////	@Test
-//	public void testObtenerArticulo() {
-//		assertTrue(instancia.grabarArticulo(articuloUno));
-//		assertEquals(instancia.obtenerArticulo(articuloUno.getNombre()),articuloUno);
-//		assertTrue(instancia.grabarArticulo(articuloDos));
-//		assertEquals(instancia.obtenerArticulo(articuloDos.getNombre()),articuloDos);
-//	}
+	}
+
+	@Test
+	public void testObtenerArticulo() {
+		assertTrue(instancia.grabar(articuloUno));
+		assertEquals(instancia.obtenerArticulo(articuloUno.getNombre()),articuloUno);
+		assertTrue(instancia.grabar(articuloDos));
+		assertEquals(instancia.obtenerArticulo(articuloDos.getNombre()),articuloDos);
+	}
 //
 ////	@Test
 //	public void testGrabarPedido() {

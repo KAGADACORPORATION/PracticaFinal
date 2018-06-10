@@ -21,7 +21,7 @@ public class Utiles {
 	public static final String DATA = "data";
 	public static final String ARTICULOS = "articulos";
 	public static final String ART = "art";
-	public static final String ARTICULO_MAP = "articulo.map";
+	public static final String ARTICULO_MAP = "./data/articulos/articulo.map";
 	public static final String PEDIDORUTA = "./data/pedidos";
 	private static String cadena;
 	
