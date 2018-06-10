@@ -1,5 +1,6 @@
 package almacenes;
 
+import java.io.File;
 import java.util.Map;
 
 import acceso.DAO;
@@ -14,9 +15,17 @@ public class AlmacenMap<K, V> {
 			this.mapa = mapa;
 			this.rutaMapa = rutaMapa;
 			dao = new DAO<>();
+			generarCarpetasSiNo();
 			getMapa();
 		}
-
+		/**
+		 * 
+		 */
+		private void generarCarpetasSiNo() {
+			if(!new File(rutaMapa).exists()) {
+				new File(rutaMapa.substring(0,rutaMapa.lastIndexOf('/'))).mkdirs();
+			}
+		}
 		public V obtener(K k) {
 			getMapa();
 			V v = null;

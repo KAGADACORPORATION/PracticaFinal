@@ -33,22 +33,10 @@ public class Logica {
   public boolean borrarClientePorNombre(String nombre) {
 	  return datos.borrar(obtenerCliente(nombre));
   }
-//  
-//  public Boolean borrarClientePorNif(String nif) {
-//	  boolean retorno = false;
-//	  for (int i = 0; i < datos.getArrayCliente().size(); i++) {
-//		Cliente clienteTemporal = datos.getArrayCliente().get(i);
-//		if(clienteTemporal.getDniCif().equals(nif)) {
-//			datos.borrar(clienteTemporal);
-//			retorno = true;
-//		}
-//	  }
-//	return retorno;
-//	  }
-//  
-//	public Boolean darAltaArticulo(Articulo articulo) {
-//		return datos.grabar(articulo);
-//	}
+  
+	public Boolean darAltaArticulo(Articulo articulo) {
+		return datos.grabar(articulo);
+	}
 
 	public Articulo buscarArticulo() {
 		return null;
