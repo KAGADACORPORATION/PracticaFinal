@@ -9,7 +9,7 @@ public class PopUpTablaClientes extends JPopupMenu {
 	JMenuItem borrarOption;
 
 	public PopUpTablaClientes() {
-		addOption = new JMenuItem("Añadir");
+		addOption = new JMenuItem("Añadir (solo en pedido please)");
 		borrarOption = new JMenuItem("Borrar");
 		add(addOption);
 		add(borrarOption);
