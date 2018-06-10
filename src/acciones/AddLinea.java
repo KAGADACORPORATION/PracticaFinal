@@ -32,11 +32,11 @@ public class AddLinea implements ActionListener {
 		} else {
 			pedido = logica.getPedidoTemporal();
 		}
-		Articulo articulo=new Articulo(99, "cama", "mu buena", 150);
-		Linea linea = new Linea(articulo, Integer.valueOf(vista.getTextCantidad().getText()));
+		Linea linea = new Linea(logica.getArticuloTemporal(), Integer.valueOf(vista.getTextCantidad().getText()));
 		if (puente.getValidador().validarLineaPedido(linea)) {
 			pedido.insertarLinea(linea);
 			vista.getLblMensaje().setText("linea añadida");
+			logica.setArticuloTemporal(null);
 		} else {
 			vista.getLblMensaje().setText("error");
 		}
