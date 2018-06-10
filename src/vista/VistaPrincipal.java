@@ -180,4 +180,16 @@ public class VistaPrincipal extends JFrame {
 		return panelArticulo.getModeloTablaArticulo();
 	}
 
+	public VistaEjecutarBuscarPedido getVistaEjecutarBuscarPedido() {
+		return panelPedido.getVistaEjecutarBuscarPedido();
+	}
+
+	public JTextField getTextField() {
+		return panelPedido.getTextField();
+	}
+
+	public DefaultTableModel getModeloTablaPedido() {
+		return panelPedido.getModeloTablaPedido();
+	}
+
 }

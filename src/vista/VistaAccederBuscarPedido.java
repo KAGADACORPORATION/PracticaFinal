@@ -1,7 +1,9 @@
 package vista;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -65,5 +67,14 @@ public JButton getBtnConsultarPedidos() {
 	}
 
 public JPanel VistaAccederPedido;
+
+
+public JTextField getTextField() {
+	return vistaEjecutarBuscarPedido.getTextField();
+}
+
+public DefaultTableModel getModeloTablaPedido() {
+	return vistaEjecutarBuscarPedido.getModeloTablaPedido();
+}
 
 }

@@ -76,5 +76,9 @@ public class Datos {
 	public int getCantidadArticulos() {
 		return articulos.getCantidadArticulos();
 	}
+
+	public int getCantidadPedidos(Cliente cliente) {
+		return pedidos.getCantidadPedidos(cliente);
+	}
 	
 }

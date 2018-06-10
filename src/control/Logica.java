@@ -126,7 +126,8 @@ public class Logica {
 	public int getCantidadArticulos() {
 		return datos.getCantidadArticulos();
 	}
-
-	
+	public int getCantidadPedidos(Cliente cliente) {
+		return datos.getCantidadPedidos(cliente);
+	}
 
 }
