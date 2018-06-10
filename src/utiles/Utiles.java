@@ -14,8 +14,10 @@ import acciones.ListenerMouseTablaCliente;
 import control.Puente;
 import modelo.Articulo;
 import modelo.Cliente;
+import modelo.Pedido;
 import vista.VistaEjecutarBuscarArticulo;
 import vista.VistaEjecutarBuscarCliente;
+import vista.VistaEjecutarBuscarPedido;
 
 public class Utiles {
 	public static final String RUTACLIENTE = "./data/clientes/clientes.data";
@@ -85,7 +87,23 @@ public class Utiles {
 		Utiles.actualizar(puente.getVistaEjecutarBuscarArticulo().getTable().getParent());
 	}
 
-	
+//	public static void ActualizarTablaPedidos(Puente puente) {
+//		VistaEjecutarBuscarPedido vista = puente.getVistaEjecutarBuscarPedido();
+//		cadena = new String(vista.getTextField().getText());
+//				
+//		while (puente.getModeloTablaPedido().getRowCount() > 0) {
+//			puente.getModeloTablaPedido().removeRow(0);
+//		}
+//		for (int i = 0; i < puente.getLogica().getCantidadPedidos(puente.getLogica().getClienteTemporal()); i++) {
+//			if(pedidoAux.getCliente().equals(obj)) {
+//				String adicion[] = { String.valueOf(pedidoAux.getIdArticulo()), pedidoAux.getNombre(), pedidoAux.getDescripcion(),
+//						String.valueOf(pedidoAux.getCurrentPrice())};
+//				puente.getModeloTablaArticulo().addRow(adicion);
+//			}
+//		}
+//		vista.getTable().addMouseListener(new ListenerMouseTablaArticulos(puente));
+//		Utiles.actualizar(puente.getVistaEjecutarBuscarArticulo().getTable().getParent());
+//	}
 	
 	public static void actualizar(JPanel panel) {
 	  	SwingUtilities.updateComponentTreeUI(panel);

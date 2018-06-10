@@ -2,12 +2,15 @@ package vista;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 
 public class PanelPedido extends JPanel {
 
@@ -60,5 +63,17 @@ public class PanelPedido extends JPanel {
 
 	public VistaAccederBuscarPedido getVistaAccederPedido() {
 		return vistaAccederPedido;
+	}
+
+	public VistaEjecutarBuscarPedido getVistaEjecutarBuscarPedido() {
+		return vistaAccederPedido.getVistaEjecutarBuscarPedido();
+	}
+
+	public JTextField getTextField() {
+		return vistaAccederPedido.getTextField();
+	}
+
+	public DefaultTableModel getModeloTablaPedido() {
+		return vistaAccederPedido.getModeloTablaPedido();
 	}
 }

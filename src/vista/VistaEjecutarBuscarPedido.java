@@ -25,7 +25,7 @@ public class VistaEjecutarBuscarPedido extends JPanel {
 	private JButton boton;
 	private String[][] data;
 	private String[] nombresColumnas = { "ID", "Fecha", "Cliente", "Total" };
-	private DefaultTableModel modeloTabla = new DefaultTableModel(data, nombresColumnas);
+	private DefaultTableModel modeloTablaPedido = new DefaultTableModel(data, nombresColumnas);
 	private JTable table;
 
 	public VistaEjecutarBuscarPedido() {
@@ -37,7 +37,7 @@ public class VistaEjecutarBuscarPedido extends JPanel {
 
 		JScrollPane scrollPane = new JScrollPane();
 		panel_1.add(scrollPane, BorderLayout.CENTER);
-		table = new JTable(modeloTabla);
+		table = new JTable(modeloTablaPedido);
 		table.setEnabled(false);
 		scrollPane.setViewportView(table);
 
@@ -103,16 +103,12 @@ public class VistaEjecutarBuscarPedido extends JPanel {
 		return boton;
 	}
 
-	public DefaultTableModel getModeloTabla() {
-		return modeloTabla;
-	}
-
-	public void setModeloTabla(DefaultTableModel modeloTabla) {
-		this.modeloTabla = modeloTabla;
-	}
-
 	public JTable getTable() {
 		return table;
+	}
+
+	public DefaultTableModel getModeloTablaPedido() {
+		return modeloTablaPedido;
 	}
 
 }

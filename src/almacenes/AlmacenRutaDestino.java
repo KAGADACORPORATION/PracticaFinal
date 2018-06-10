@@ -3,6 +3,7 @@ package almacenes;
 import java.io.File;
 
 import acceso.DAORuta;
+import modelo.Cliente;
 import modelo.Pedido;
 
 public class AlmacenRutaDestino<T> {
@@ -69,5 +70,9 @@ public class AlmacenRutaDestino<T> {
 	public boolean borrar(Pedido pedido) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public int getCantidadPedidos(Cliente cliente) {
+		return 0;
 	}
 }
