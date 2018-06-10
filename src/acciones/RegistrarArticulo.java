@@ -33,14 +33,15 @@ public class RegistrarArticulo implements ActionListener {
 				vista.getTextNombreAltaArticulo().getText(), vista.getTextDescripcionAltaArticulo().getText(),
 				Float.valueOf(vista.getTextPrecio().getText()));
 
-		if (puente.getLogica().darAltaArticulo(articulo)) {
+		if (puente.getLogica().darAlta(articulo)) {
 			vista.getTextNombreAltaArticulo().setText("");
 			vista.getTextDescripcionAltaArticulo().setText("");
 			vista.getTextPrecio().setText("");
 			vista.getLblMensaje().setText("Articulo creado");
-		} else
+		}
+		else {
 			disminuirId();
-			vista.getLblMensaje().setText("error al crear");
+			vista.getLblMensaje().setText("error al crear");}
 
 		Utiles.actualizar(puente);
 	}

@@ -31,12 +31,17 @@ public class Logica {
 	public Cliente obtenerCliente(String nombre) {
 		return datos.obtenerCliente(nombre);
 	}
-
+  
 	public boolean borrarClientePorNombre(String nombre) {
 		return datos.borrar(obtenerCliente(nombre));
 	}
 
-	public Boolean darAltaArticulo(Articulo articulo) {
+  public boolean borrarClientePorNombre(String nombre) {
+	  return datos.borrar(obtenerCliente(nombre));
+  }
+  
+	public boolean darAlta(Articulo articulo) {
+
 		return datos.grabar(articulo);
 	}
 
@@ -44,16 +49,16 @@ public class Logica {
 		return null;
 	}
 
-	public Boolean modificarPrecio() {
-		return null;
+	public boolean modificarPrecio() {
+		return false;
 	}
 
 	public ArrayList consultarHistorico() {
 		return null;
 	}
 
-	public Boolean insertarLineaPedido() {
-		return null;
+	public boolean insertarLineaPedido() {
+		return false;
 	}
 
 	private Pedido pedidoTemporal;
@@ -74,11 +79,10 @@ public class Logica {
 		return getDatos().getClientes().getIndice().size();
 	}
 
-	public TreeMap<String, Integer> getIndice() {
-		if (getDatos().getClientes().getIndice() != null)
-			return getDatos().getClientes().getIndice();
-		else
-			return new TreeMap<String, Integer>();
+	public  TreeMap<String, Integer> getIndice() {
+		if(getDatos().getClientes().getIndice()!=null)return getDatos().getClientes().getIndice();
+		else return new TreeMap<String,Integer>();
+
 	}
 
 	public Object obtenerCliente(int i) {
@@ -88,9 +92,9 @@ public class Logica {
 	public boolean grabarPedido(Pedido pedido) {
 		if (validador.validarPedido(pedido))
 			return datos.grabar(pedido);
+
 		else
 			return false;
-
 	}
 
 	public Pedido obtenerPedido(Pedido pedido) {
@@ -98,8 +102,8 @@ public class Logica {
 
 	}
 
-	Cliente clienteTemporal;
-
+  private Cliente clienteTemporal;
+  
 	public void setClienteTemporal(Cliente cliente) {
 		this.clienteTemporal = cliente;
 	}
@@ -108,15 +112,18 @@ public class Logica {
 		return this.clienteTemporal;
 	}
 
-	JFrame ventanaAñadirClienteAPedido;
+	public boolean darAlta(Cliente cliente) {
+		return datos.grabar(cliente);
+
+	private JFrame ventanaAÃ±adirClienteAPedido;
 
 	public void setFrame(JFrame ventana) {
-		this.ventanaAñadirClienteAPedido = ventana;
+		this.ventanaAÃ±adirClienteAPedido = ventana;
 
 	}
 
 	public JFrame getFrame() {
-		return ventanaAñadirClienteAPedido;
+		return ventanaAÃ±adirClienteAPedido;
 	}
 
 }
