@@ -15,23 +15,21 @@ import vista.VistaEjecutarAltaPedido;
 
 public class AddLinea implements ActionListener {
 	private Puente puente;
-	private Validador validador;
 	private Pedido pedido;
 
-	public AddLinea(Puente puente, Validador validador) {
+	public AddLinea(Puente puente) {
 		super();
 		this.puente = puente;
-		this.validador = validador;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		VistaEjecutarAltaPedido vista = puente.getVistaAccederAltaPedido().getVistaEjecutarAltaPedido();
+		VistaEjecutarAltaPedido vista = puente.getVistaEjecutarAltaPedido();
 		Logica logica = puente.getLogica();
 		logica.setPedidoTemporal(new Pedido(getIdPedido(), logica.getClienteTemporal()));
 		pedido = logica.getPedidoTemporal();
 
-		Linea linea = new Linea((Articulo) vista.getComboBoxArticulo().getSelectedItem(),
+		Linea linea = new Linea((Articulo) ,
 				Integer.valueOf(vista.getTextCantidad().getText()));
 		if (puente.getValidador().validarLineaPedido(linea)) {
 			pedido.insertarLinea(linea);

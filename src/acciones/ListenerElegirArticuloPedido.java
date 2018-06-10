@@ -11,11 +11,11 @@ import modelo.Cliente;
 import utiles.Utiles;
 import vista.VistaEjecutarBuscarCliente;
 
-public class ListenerElegirClientePedido implements ActionListener {
+public class ListenerElegirArticuloPedido implements ActionListener {
 
 	private Puente puente;
 
-	public ListenerElegirClientePedido(Puente puente) {
+	public ListenerElegirArticuloPedido(Puente puente) {
 		this.puente = puente;
 	}
 
@@ -25,7 +25,7 @@ public class ListenerElegirClientePedido implements ActionListener {
 		ventana.setBounds(500, 500, 670, 413);
 		ventana.getContentPane().removeAll();
 		ventana.getContentPane().add(puente.getVistaEjecutarBuscarCliente());
-		VistaEjecutarBuscarCliente vista = puente.getVistaEjecutarBuscarCliente();
+		VistaEjecutarBuscarCliente vista = puente.getVistaAccederBuscarCliente().getVistaEjecutarBuscarCliente();
 		Utiles.ActualizarTablaCliente(puente);	
 		vista.getTable().addMouseListener(new ListenerMouseTablaCliente(puente));
 		Utiles.actualizar(puente);
