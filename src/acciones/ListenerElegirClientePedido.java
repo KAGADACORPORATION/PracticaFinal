@@ -26,7 +26,20 @@ public class ListenerElegirClientePedido implements ActionListener {
 		ventana.getContentPane().removeAll();
 		ventana.getContentPane().add(puente.getVistaEjecutarBuscarCliente());
 		VistaEjecutarBuscarCliente vista = puente.getVistaAccederBuscarCliente().getVistaEjecutarBuscarCliente();
-		Utiles.ActualizarTablaCliente(puente);	
+
+		ArrayList<Cliente> clientes = this.puente.getLogica().getDatos().getArrayCliente();
+		while (this.puente.getModeloTabla().getRowCount() > 0) {
+			this.puente.getModeloTabla().removeRow(0);
+		}
+		for (int i = 0; i < clientes.size(); i++) {
+			Cliente clienteAux = this.puente.getLogica().getDatos().getArrayCliente().get(i);
+			String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getClave(), clienteAux.getDireccion(),
+					clienteAux.getTelefono() };
+			// addrow al default
+			this.puente.getModeloTabla().addRow(adicion);
+
+			Utiles.actualizar(puente);
+		}
 		vista.getTable().addMouseListener(new ListenerMouseTablaCliente(puente));
 		Utiles.actualizar(puente);
 		ventana.setVisible(true);
