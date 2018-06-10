@@ -72,19 +72,6 @@ public class DatosTest {
 	}
 
 	@Test
-	public void testBorrarArticulo() {
-		assertTrue(instancia.grabar(articuloUno));
-		assertEquals(instancia.obtenerArticulo(articuloUno.getNombre()),articuloUno);
-		assertTrue(instancia.grabar(articuloDos));
-		assertEquals(instancia.obtenerArticulo(articuloDos.getNombre()),articuloDos);
-		assertTrue(instancia.borrar(articuloUno));
-		assertNull(instancia.obtenerArticulo(articuloUno.getNombre()));
-		assertTrue(instancia.borrar(articuloDos));
-		assertNull(instancia.obtenerArticulo(articuloDos.getNombre()));
-
-	}
-
-	@Test
 	public void testObtenerArticulo() {
 		assertTrue(instancia.grabar(articuloUno));
 		assertEquals(instancia.obtenerArticulo(articuloUno.getNombre()),articuloUno);
@@ -92,28 +79,28 @@ public class DatosTest {
 		assertEquals(instancia.obtenerArticulo(articuloDos.getNombre()),articuloDos);
 	}
 
-	@Test
-	public void testGrabarPedido() {
-		assertTrue(instancia.grabar(pedidoUno));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoUno.getNumero()), pedidoUno.getCliente().getDniCif()).getNumero(),pedidoUno.getNumero());
-		assertTrue(instancia.grabar(pedidoDos));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoDos.getNumero()), pedidoDos.getCliente().getDniCif()).getNumero(),pedidoDos.getNumero());
-		assertTrue(instancia.grabar(pedidoTres));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoTres.getNumero()), pedidoTres.getCliente().getDniCif()).getNumero(),pedidoTres.getNumero());
-		assertTrue(instancia.grabar(pedidoCuatro));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoCuatro.getNumero()), pedidoCuatro.getCliente().getDniCif()).getNumero(),pedidoCuatro.getNumero());
-	}
+//	@Test
+//	public void testGrabarPedido() {
+//		assertTrue(instancia.grabar(pedidoUno));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoUno.getNumero()), pedidoUno.getCliente().getDniCif()).getNumero(),pedidoUno.getNumero());
+//		assertTrue(instancia.grabar(pedidoDos));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoDos.getNumero()), pedidoDos.getCliente().getDniCif()).getNumero(),pedidoDos.getNumero());
+//		assertTrue(instancia.grabar(pedidoTres));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoTres.getNumero()), pedidoTres.getCliente().getDniCif()).getNumero(),pedidoTres.getNumero());
+//		assertTrue(instancia.grabar(pedidoCuatro));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoCuatro.getNumero()), pedidoCuatro.getCliente().getDniCif()).getNumero(),pedidoCuatro.getNumero());
+//	}
 
-	@Test
-	public void testBorrarPedido() {
-		assertTrue(instancia.grabar(pedidoUno));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoUno.getNumero()), pedidoUno.getCliente().getDniCif()).getNumero(),pedidoUno.getNumero());
-		assertTrue(instancia.grabar(pedidoDos));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoDos.getNumero()), pedidoDos.getCliente().getDniCif()).getNumero(),pedidoDos.getNumero());
-		assertTrue(instancia.grabar(pedidoTres));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoTres.getNumero()), pedidoTres.getCliente().getDniCif()).getNumero(),pedidoTres.getNumero());
-		assertTrue(instancia.grabar(pedidoCuatro));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoCuatro.getNumero()), pedidoCuatro.getCliente().getDniCif()).getNumero(),pedidoCuatro.getNumero());
+//	@Test
+//	public void testBorrarPedido() {
+//		assertTrue(instancia.grabar(pedidoUno));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoUno.getNumero()), pedidoUno.getCliente().getDniCif()).getNumero(),pedidoUno.getNumero());
+//		assertTrue(instancia.grabar(pedidoDos));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoDos.getNumero()), pedidoDos.getCliente().getDniCif()).getNumero(),pedidoDos.getNumero());
+//		assertTrue(instancia.grabar(pedidoTres));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoTres.getNumero()), pedidoTres.getCliente().getDniCif()).getNumero(),pedidoTres.getNumero());
+//		assertTrue(instancia.grabar(pedidoCuatro));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoCuatro.getNumero()), pedidoCuatro.getCliente().getDniCif()).getNumero(),pedidoCuatro.getNumero());
 //		assertTrue(instancia.borrar(pedidoUno));
 //		assertNull(instancia.obtenerPedido(String.valueOf(pedidoUno.getNumero()), pedidoUno.getCliente().getDniCif()));
 //		assertTrue(instancia.borrar(pedidoDos));
@@ -122,18 +109,18 @@ public class DatosTest {
 //		assertNull(instancia.obtenerPedido(String.valueOf(pedidoTres.getNumero()), pedidoTres.getCliente().getDniCif()));
 //		assertTrue(instancia.borrar(pedidoCuatro));
 //		assertNull(instancia.obtenerPedido(String.valueOf(pedidoCuatro.getNumero()), pedidoCuatro.getCliente().getDniCif()));
-	}
-
-	@Test
-	public void testObtenerPedido() {
-		assertTrue(instancia.grabar(pedidoUno));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoUno.getNumero()), pedidoUno.getCliente().getDniCif()).getNumero(),pedidoUno.getNumero());
-		assertTrue(instancia.grabar(pedidoDos));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoDos.getNumero()), pedidoDos.getCliente().getDniCif()).getNumero(),pedidoDos.getNumero());
-		assertTrue(instancia.grabar(pedidoTres));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoTres.getNumero()), pedidoTres.getCliente().getDniCif()).getNumero(),pedidoTres.getNumero());
-		assertTrue(instancia.grabar(pedidoCuatro));
-		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoCuatro.getNumero()), pedidoCuatro.getCliente().getDniCif()).getNumero(),pedidoCuatro.getNumero());
-	}
+//	}
+//
+//	@Test
+//	public void testObtenerPedido() {
+//		assertTrue(instancia.grabar(pedidoUno));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoUno.getNumero()), pedidoUno.getCliente().getDniCif()).getNumero(),pedidoUno.getNumero());
+//		assertTrue(instancia.grabar(pedidoDos));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoDos.getNumero()), pedidoDos.getCliente().getDniCif()).getNumero(),pedidoDos.getNumero());
+//		assertTrue(instancia.grabar(pedidoTres));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoTres.getNumero()), pedidoTres.getCliente().getDniCif()).getNumero(),pedidoTres.getNumero());
+//		assertTrue(instancia.grabar(pedidoCuatro));
+//		assertEquals(instancia.obtenerPedido(String.valueOf(pedidoCuatro.getNumero()), pedidoCuatro.getCliente().getDniCif()).getNumero(),pedidoCuatro.getNumero());
+//	}
 
 }
