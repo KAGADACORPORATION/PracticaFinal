@@ -55,4 +55,8 @@ public class VistaAccederBuscarArticulo extends JPanel {
 		return vistaEjecutarBuscarArticulo.getTextPrecioBuscarArticulo();
 	}
 
+	public DefaultTableModel getModeloTablaArticulo() {
+		return vistaEjecutarBuscarArticulo.getModeloTablaArticulo();
+	}
+	
 }
