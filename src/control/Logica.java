@@ -130,7 +130,7 @@ public class Logica {
 	public int getCantidadPedidos(Cliente cliente) {
 		return datos.getCantidadPedidos(cliente);
 	}
-	
+
 	private Articulo articuloTemporal;
 
 	public void setArticuloTemporal(Articulo articulo) {
