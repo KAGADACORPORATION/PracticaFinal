@@ -30,7 +30,7 @@ public class ListenerAddOptionPopUpArticulo implements ActionListener{
         System.out.println("Nombre: "+tabla.getValueAt(row, 1));
         System.out.println("Descripcion: "+tabla.getValueAt(row, 2));
         System.out.println("Precio: "+tabla.getValueAt(row, 3));
-        vistaPedido.getButtonBuscarCliente().setText(tabla.getValueAt(row, 0).toString());
+        vistaPedido.getButtonBucarArticulo().setText(tabla.getValueAt(row, 0).toString());
         puente.getLogica().getFrame().setVisible(false);
 	}
 }

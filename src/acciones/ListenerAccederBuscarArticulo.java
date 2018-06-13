@@ -24,10 +24,7 @@ public class ListenerAccederBuscarArticulo implements ActionListener {
 		puente.getContentPane().removeAll();
 		puente.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
 		puente.getContentPane().add(puente.getVistaEjecutarBuscarArticulo());
-		Utiles.actualizar(puente);
 		Utiles.ActualizarTablaArticulos(puente);
-		
-
 	}
 
 }

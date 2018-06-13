@@ -68,6 +68,4 @@ public class Articulo implements Serializable {
 	public String getDescripcion() {
 		return descripcion;
 	}
-
-
 }

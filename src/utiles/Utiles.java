@@ -71,12 +71,12 @@ public class Utiles {
 	
 	public static void ActualizarTablaArticulos(Puente puente) {
 		VistaEjecutarBuscarArticulo vista = puente.getVistaEjecutarBuscarArticulo();
-		cadena = vista.getTextBuscarBuscarArticulo().getText();
+		cadena = new String(vista.getTextBuscarBuscarArticulo().getText());
 		while (puente.getModeloTablaArticulo().getRowCount() > 0) {
 			puente.getModeloTablaArticulo().removeRow(0);
 		}
 		for (int i = 0; i < puente.getLogica().getCantidadArticulos(); i++) {
-			Articulo articuloAux = (Articulo) puente.getLogica().obtenerCliente(i);
+			Articulo articuloAux = (Articulo) puente.getLogica().obtenerArticulo(i);
 			if(articuloAux.getNombre().toLowerCase().startsWith(cadena)) {
 				String adicion[] = { String.valueOf(articuloAux.getIdArticulo()), articuloAux.getNombre(), articuloAux.getDescripcion(),
 						String.valueOf(articuloAux.getCurrentPrice())};

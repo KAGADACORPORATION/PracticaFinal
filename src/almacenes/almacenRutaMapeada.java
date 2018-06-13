@@ -5,6 +5,7 @@ import java.util.TreeMap;
 
 import acceso.DAO;
 import acceso.DAORuta;
+import modelo.Articulo;
 
 public class almacenRutaMapeada<T, K> {
 	private DAORuta<T> ruta;
@@ -65,6 +66,11 @@ public class almacenRutaMapeada<T, K> {
 	}
 	public int getCantidadArticulos() {
 		return mapa.getSize();
+	}
+
+	public T obtener(int i) {
+		return ruta.obtener(pathPadre, estableceRuta(i));
+		
 	}
 	
 }

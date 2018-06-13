@@ -93,7 +93,7 @@ public class VistaEjecutarBuscarArticulo extends JPanel {
 		lblIntroduceElTexto.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		panel.add(lblIntroduceElTexto);
 
-		textBuscarBuscarArticulo = new JTextField();
+		textBuscarBuscarArticulo = new JTextField("");
 		panel.add(textBuscarBuscarArticulo);
 		textBuscarBuscarArticulo.setColumns(10);
 

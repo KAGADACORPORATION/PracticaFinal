@@ -8,6 +8,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import control.Puente;
+import utiles.Utiles;
 import vista.VistaEjecutarBuscarArticulo;
 import vista.VistaEjecutarBuscarCliente;
 
@@ -26,7 +27,6 @@ public class ListenerMouseTablaArticulos implements MouseListener {
 		JTable tabla = vista.getTable();
 		if (e.getButton() == MouseEvent.BUTTON3) {
 			int r = tabla.rowAtPoint(e.getPoint());
-			System.out.println(r);
 			if (r >= 0 && r < tabla.getRowCount()) {
 				tabla.setRowSelectionInterval(r, r);
 			} else {
@@ -39,6 +39,18 @@ public class ListenerMouseTablaArticulos implements MouseListener {
 			if (e.getComponent() instanceof JTable) {
 				doPop(e, tabla, rowindex);
 			}
+		}
+		if (e.getButton() == MouseEvent.BUTTON1) {
+			int r = tabla.rowAtPoint(e.getPoint());
+			if (r >= 0 && r < tabla.getRowCount()) {
+				tabla.setRowSelectionInterval(r, r);
+			} else {
+				tabla.clearSelection();
+			}
+			int rowindex = tabla.getSelectedRow();
+			puente.getTextDescripcionBuscarArticulo().setText(this.puente.getLogica().obtenerArticulo(rowindex).getDescripcion());
+			puente.getTextPrecioBuscarArticulo().setText(String.valueOf(this.puente.getLogica().obtenerArticulo(rowindex).getCurrentPrice()));
+			Utiles.ActualizarTablaArticulos(puente);
 		}
 	}
 

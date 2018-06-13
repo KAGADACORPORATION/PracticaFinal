@@ -13,12 +13,10 @@ import vista.VistaEjecutarAltaArticulo;
 public class RegistrarArticulo implements ActionListener {
 
 	private Puente puente;
-	private Validador validador;
 
-	public RegistrarArticulo(Puente puente, Validador validador) {
+	public RegistrarArticulo(Puente puente) {
 		super();
 		this.puente = puente;
-		this.validador = validador;
 	}
 
 	@Override
@@ -40,22 +38,13 @@ public class RegistrarArticulo implements ActionListener {
 			vista.getLblMensaje().setText("Articulo creado");
 		}
 		else {
-			disminuirId();
 			vista.getLblMensaje().setText("error al crear");}
 
 		Utiles.actualizar(puente);
 	}
 	
-	private int idArticulo = 0;
-
 	public int getIdArticulo() {
-		this.idArticulo=this.idArticulo+1;
-		return idArticulo;
-	}
-	
-	public int disminuirId() {
-		this.idArticulo=this.idArticulo-1;
-		return idArticulo;
+		return this.puente.getLogica().getCantidadArticulos();
 	}
 
 }
