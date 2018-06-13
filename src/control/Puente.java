@@ -1,6 +1,5 @@
 package control;
 
-import javax.swing.JPanel;
 import acciones.AddLinea;
 import acciones.BuscarArticulo;
 import acciones.BuscarClienteKey;
@@ -19,7 +18,6 @@ import acciones.ListenerElegirArticuloPedido;
 import acciones.RegistrarPedido;
 import vista.VistaPrincipal;
 import acciones.ListenerElegirClientePedido;
-import acciones.ListenerMouseTablaArticulos;
 
 public class Puente extends VistaPrincipal {
 
@@ -66,7 +64,7 @@ public class Puente extends VistaPrincipal {
 		this.mntmBuscarArticulo.addActionListener(new ListenerAccederBuscarArticulo(this));
 		this.mntmDarDeAlta.addActionListener(new ListenerAccederAltaArticulo(this));
 		
-		this.getVistaEjecutarAltaArticulo().getBtnGuardar().addActionListener(new RegistrarArticulo(this,validador));
+		this.getVistaEjecutarAltaArticulo().getBtnGuardar().addActionListener(new RegistrarArticulo(this));
 		this.getVistaEjecutarBuscarArticulo().getTextBuscarBuscarArticulo().addKeyListener(new BuscarArticulo(this));
 	}
 

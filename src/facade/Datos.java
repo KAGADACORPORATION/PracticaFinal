@@ -80,5 +80,9 @@ public class Datos {
 	public int getCantidadPedidos(Cliente cliente) {
 		return pedidos.getCantidadPedidos(cliente);
 	}
+
+	public Articulo obtenerArticulo(int i) {
+		return articulos.obtener(i);
+	}
 	
 }

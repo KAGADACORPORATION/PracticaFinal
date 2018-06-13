@@ -43,10 +43,6 @@ public class Logica {
 		return datos.obtenerArticulo(nombre);
 	}
 
-	public Articulo buscarArticulo() {
-		return null;
-	}
-
 	public boolean modificarPrecio() {
 		return false;
 	}
@@ -145,4 +141,7 @@ public class Logica {
 		return articuloTemporal;
 	}
 
+	public Articulo obtenerArticulo(int i) {
+		return datos.obtenerArticulo(i);
+	}
 }

@@ -27,11 +27,9 @@ public class ListenerElegirArticuloPedido implements ActionListener {
 		ventana.getContentPane().removeAll();
 		ventana.getContentPane().add(puente.getVistaEjecutarBuscarArticulo());
 		VistaEjecutarBuscarArticulo vista = puente.getVistaEjecutarBuscarArticulo();
-		Utiles.ActualizarTablaArticulos(puente);	
 		vista.getTable().addMouseListener(new ListenerMouseTablaArticulos(puente));
-		Utiles.actualizar(puente);
 		ventana.setVisible(true);
 		puente.getLogica().setFrame(ventana);
-
+		Utiles.ActualizarTablaArticulos(puente);
 	}
 }
