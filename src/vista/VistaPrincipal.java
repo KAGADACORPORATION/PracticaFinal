@@ -179,6 +179,11 @@ public class VistaPrincipal extends JFrame {
 	public DefaultTableModel getModeloTablaArticulo() {
 		return panelArticulo.getModeloTablaArticulo();
 	}
+	
+	VistaDetallesPedido vistaDetallesPedido= new VistaDetallesPedido();
+	public VistaDetallesPedido getVistaDetallesPedido() {
+		return vistaDetallesPedido;
+	}
 
 	public VistaEjecutarBuscarPedido getVistaEjecutarBuscarPedido() {
 		return panelPedido.getVistaEjecutarBuscarPedido();
