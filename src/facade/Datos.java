@@ -80,10 +80,14 @@ public class Datos {
 		return articulos.getCantidadArticulos();
 	}
 
-	public int getCantidadPedidos() {
+	public int getCantidadClientesConPedidos() {
 		return pedidos.getCantidadElementos();
 	}
 
+	public int getCantidadDePedidosDe(Cliente cliente) {
+		return pedidos.getCantidadElementos(cliente.getRazonSocial());
+	}
+	
 	public Articulo obtenerArticulo(int i) {
 		return articulos.obtener(i);
 	}

@@ -94,9 +94,8 @@ public class Logica {
 			return false;
 	}
 
-	public Pedido obtenerPedido(Pedido pedido) {
-		return datos.obtenerPedido(pedido.getCliente().getDniCif(),String.valueOf(pedido.getNumero()));
-
+	public Pedido obtenerPedido(String nombreCliente,String numeroPedido) {
+		return datos.obtenerPedido(nombreCliente,numeroPedido);
 	}
 
 	private Cliente clienteTemporal;
@@ -128,10 +127,12 @@ public class Logica {
 		return datos.getCantidadArticulos();
 	}
 
-	public int getCantidadPedidos() {
-		return datos.getCantidadPedidos();
+	public int getCantidadClientesConPedidos() {
+		return datos.getCantidadClientesConPedidos();
 	}
-
+	public int CantidadDePedidosDe(Cliente cliente) {
+		return datos.getCantidadDePedidosDe(cliente);
+	}
 	public void setArticuloTemporal(Articulo articulo) {
 		this.articuloTemporal = articulo;
 	}
