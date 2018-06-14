@@ -51,7 +51,7 @@ public class AddLinea implements ActionListener {
 	}
 
 	public int generarIdPedido() {
-		return puente.getLogica().getCantidadPedidos();
+		return puente.getLogica().getCantidadClientesConPedidos();
 	}
 
 }

@@ -12,6 +12,7 @@ import control.Puente;
 import control.Validador;
 import modelo.Articulo;
 import modelo.Cliente;
+import modelo.Linea;
 import modelo.Pedido;
 import utiles.Utiles;
 
@@ -25,6 +26,11 @@ public class LogicaTest {
 	Pedido pedidoDos = new Pedido(1, cliente);
 	Pedido pedidoTres = new Pedido(2, clienteDos);
 	Pedido pedidoCuatro = new Pedido(3, clienteDos);
+	Linea linea = new Linea(articuloUno, 2);
+	Linea lineaDos = new Linea(articuloUno, 2);
+	Linea lineaTres = new Linea(articuloDos, 2);
+	Linea lineaCuatro = new Linea(articuloDos, 2);
+	
 	
 	
 	@After public void tearDown() throws Exception {
@@ -88,21 +94,49 @@ public class LogicaTest {
 		assertNull(instancia.obtenerArticulo(2));
 	}
 
-//	@Test
-//	public void testGrabarPedido() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testObtenerPedido() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testGetCantidadPedidos() {
-//		fail("Not yet implemented");
-//	}
-//
+	@Test
+	public void testGrabarPedido() {
+		assertTrue(instancia.grabarPedido(pedidoUno));
+		assertTrue(instancia.grabarPedido(pedidoDos));
+		assertTrue(instancia.grabarPedido(pedidoTres));
+		assertTrue(instancia.grabarPedido(pedidoCuatro));
+		assertEquals(instancia.obtenerPedido(pedidoUno.getCliente().getRazonSocial(),String.valueOf(pedidoUno.getNumero())), pedidoUno);
+		assertEquals(instancia.obtenerPedido(pedidoDos.getCliente().getRazonSocial(),String.valueOf(pedidoDos.getNumero())), pedidoDos);
+		assertEquals(instancia.obtenerPedido(pedidoTres.getCliente().getRazonSocial(),String.valueOf(pedidoTres.getNumero())), pedidoTres);
+		assertEquals(instancia.obtenerPedido(pedidoCuatro.getCliente().getRazonSocial(),String.valueOf(pedidoCuatro.getNumero())), pedidoCuatro);
+	}
+
+	@Test
+	public void testObtenerPedido() {
+		assertTrue(instancia.grabarPedido(pedidoUno));
+		assertTrue(instancia.grabarPedido(pedidoDos));
+		assertTrue(instancia.grabarPedido(pedidoTres));
+		assertTrue(instancia.grabarPedido(pedidoCuatro));
+		assertEquals(instancia.obtenerPedido(pedidoUno.getCliente().getRazonSocial(),String.valueOf(pedidoUno.getNumero())), pedidoUno);
+		assertEquals(instancia.obtenerPedido(pedidoDos.getCliente().getRazonSocial(),String.valueOf(pedidoDos.getNumero())), pedidoDos);
+		assertEquals(instancia.obtenerPedido(pedidoTres.getCliente().getRazonSocial(),String.valueOf(pedidoTres.getNumero())), pedidoTres);
+		assertEquals(instancia.obtenerPedido(pedidoCuatro.getCliente().getRazonSocial(),String.valueOf(pedidoCuatro.getNumero())), pedidoCuatro);
+	}
+
+	@Test
+	public void testGetCantidadClientesConPedidos() {
+		assertEquals(instancia.getCantidadClientesConPedidos(),0);
+		assertTrue(instancia.grabarPedido(pedidoUno));
+		assertEquals(instancia.getCantidadClientesConPedidos(),1);
+		assertTrue(instancia.grabarPedido(pedidoDos));
+		assertEquals(instancia.getCantidadClientesConPedidos(),1);
+		assertTrue(instancia.grabarPedido(pedidoTres));
+		assertEquals(instancia.getCantidadClientesConPedidos(),2);
+		assertTrue(instancia.grabarPedido(pedidoCuatro));
+		assertEquals(instancia.getCantidadClientesConPedidos(),2);
+	}
+	
+	@Test
+	public void testInsertarLineaPedido() {
+		assertTrue(pedidoUno.insertarLinea(linea));
+		assertTrue(pedidoUno.insertarLinea(lineaDos));
+	}
+
 
 //	@Test
 //	public void testModificarPrecio() {
@@ -113,9 +147,5 @@ public class LogicaTest {
 //		fail("Not yet implemented");
 //	}
 //
-//	@Test
-//	public void testInsertarLineaPedido() {
-//		fail("Not yet implemented");
-//	}
-//
+
 }

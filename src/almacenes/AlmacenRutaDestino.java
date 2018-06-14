@@ -73,4 +73,11 @@ public class AlmacenRutaDestino<T> {
 		 }
 		return 0;
 	}
+
+	public int getCantidadElementos(String subpath) {
+		if(new File(pathInicial+'/'+subpath).listFiles()!=null) {
+			 return new File(pathInicial+'/'+subpath).listFiles().length;
+		 }
+		return 0;
+	}
 }
