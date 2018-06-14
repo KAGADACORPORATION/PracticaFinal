@@ -4,12 +4,16 @@ import java.util.TreeMap;
 
 import javax.rmi.CORBA.Util;
 
+import acceso.DAO;
 import almacenes.AlmacenIndice;
+import almacenes.AlmacenIndividualList;
 import almacenes.AlmacenMap;
 import almacenes.AlmacenRutaDestino;
 import almacenes.almacenRutaMapeada;
+import almacenesTest.AlmacenIndividualListTest;
 import modelo.Articulo;
 import modelo.Cliente;
+import modelo.Linea;
 import modelo.Pedido;
 import utiles.Utiles;
 
@@ -57,15 +61,14 @@ public class Datos {
 	 }
 	
 	public boolean grabar(Pedido pedido) {
-		return pedidos.grabar(String.valueOf(pedido.getNumero()), String.valueOf(pedido.getCliente().getDniCif()),
-				pedido);
+		return pedidos.grabar(String.valueOf(pedido.getCliente().getRazonSocial()),String.valueOf(pedido.getNumero()),pedido);
 	}
 
 //	public boolean borrar(Pedido pedido) {
 //		return pedidos.borrar(String.valueOf(pedido.getNumero()), String.valueOf(pedido.getCliente().getDniCif()));
 //	}
 
-	public Pedido obtenerPedido(String nombrePedido, String nombreCliente) {
+	public Pedido obtenerPedido(String nombreCliente, String nombrePedido) {
 		return pedidos.obtener(nombreCliente, nombrePedido);
 	}
 
@@ -77,12 +80,16 @@ public class Datos {
 		return articulos.getCantidadArticulos();
 	}
 
-	public int getCantidadPedidos(Cliente cliente) {
-		return pedidos.getCantidadPedidos(cliente);
+	public int getCantidadPedidos() {
+		return pedidos.getCantidadElementos();
 	}
 
 	public Articulo obtenerArticulo(int i) {
 		return articulos.obtener(i);
+	}
+
+	public boolean insertarLineaPedido(Pedido pedido,Linea linea) {
+		return new DAO<>().grabar(Utiles.PEDIDORUTA+"/"+pedido.getNumero()+"/"+pedido.getCliente().getRazonSocial()+pedido.getNumero()+".ped", linea, true);
 	}
 	
 }

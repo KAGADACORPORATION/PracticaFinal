@@ -50,7 +50,6 @@ public class ListenerMouseTablaArticulos implements MouseListener {
 			int rowindex = tabla.getSelectedRow();
 			puente.getTextDescripcionBuscarArticulo().setText(this.puente.getLogica().obtenerArticulo(rowindex).getDescripcion());
 			puente.getTextPrecioBuscarArticulo().setText(String.valueOf(this.puente.getLogica().obtenerArticulo(rowindex).getCurrentPrice()));
-			Utiles.ActualizarTablaArticulos(puente);
 		}
 	}
 

@@ -16,7 +16,7 @@ import vista.VistaEjecutarAltaPedido;
 public class AddLinea implements ActionListener {
 	private Puente puente;
 	private Pedido pedido;
-
+	private int idPedido;
 	public AddLinea(Puente puente) {
 		super();
 		this.puente = puente;
@@ -26,33 +26,32 @@ public class AddLinea implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {	
 		VistaEjecutarAltaPedido vista = puente.getVistaEjecutarAltaPedido();
 		Logica logica = puente.getLogica();
-		if (logica.getPedidoTemporal()== null) {
-			logica.setPedidoTemporal(new Pedido(getIdPedido(), logica.getClienteTemporal()));
-			pedido=logica.getPedidoTemporal();
-		} else {
-			pedido = logica.getPedidoTemporal();
-		}
-		Linea linea = new Linea(logica.getArticuloTemporal(), Integer.valueOf(vista.getTextCantidad().getText()));
+		comprobarSiExtistePedido(logica);
+		Linea linea = new Linea(logica.getArticuloTemporal(), Integer.valueOf(vista.getTextCantidad().getText()).intValue());
 		if (puente.getValidador().validarLineaPedido(linea)) {
-			pedido.insertarLinea(linea);
+			puente.getLogica().insertarLineaPedido(linea);
 			vista.getLblMensaje().setText("linea añadida");
-			logica.setArticuloTemporal(null);
+			puente.getBtnBuscarCliente().setEnabled(true);
 		} else {
 			vista.getLblMensaje().setText("error");
 		}
 		logica.setPedidoTemporal(pedido);
 	}
 
-	private int idPedido = 0;
-
-	public int getIdPedido() {
-		this.idPedido = this.idPedido + 1;
-		return idPedido;
+	/**
+	 * @param logica
+	 */
+	private void comprobarSiExtistePedido(Logica logica) {
+		if (logica.getPedidoTemporal()== null) {
+			logica.setPedidoTemporal(new Pedido(generarIdPedido(), logica.getClienteTemporal()));
+			pedido=logica.getPedidoTemporal();
+		} else {
+			pedido = logica.getPedidoTemporal();
+		}
 	}
 
-	public int disminuirId() {
-		this.idPedido = this.idPedido - 1;
-		return idPedido;
+	public int generarIdPedido() {
+		return puente.getLogica().getCantidadPedidos();
 	}
 
 }

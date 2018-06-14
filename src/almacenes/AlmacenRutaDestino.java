@@ -67,12 +67,10 @@ public class AlmacenRutaDestino<T> {
 		}
 	}
 
-	public boolean borrar(Pedido pedido) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public int getCantidadPedidos(Cliente cliente) {
+	public int getCantidadElementos() {
+		 if(new File(pathInicial).listFiles()!=null) {
+			 return new File(pathInicial).listFiles().length;
+		 }
 		return 0;
 	}
 }

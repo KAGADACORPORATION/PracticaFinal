@@ -52,4 +52,14 @@ public class Pedido implements Serializable {
 		return lineas;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		Pedido pedido = (Pedido) obj;
+		boolean retorno = super.equals(obj);
+		if(!retorno){
+			retorno = this.numero==pedido.numero;
+		}
+		return retorno;
+	}
+	
 }

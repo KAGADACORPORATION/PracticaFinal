@@ -6,12 +6,14 @@ import javax.swing.JFrame;
 import facade.Datos;
 import modelo.Articulo;
 import modelo.Cliente;
+import modelo.Linea;
 import modelo.Pedido;
 import utiles.Utiles;
 
 public class Logica {
 	private Datos datos;
 	private Validador validador;
+	private Articulo articuloTemporal;
 
 	public Logica(Validador validador) {
 		super();
@@ -35,7 +37,6 @@ public class Logica {
 	}
 
 	public boolean darAlta(Articulo articulo) {
-
 		return datos.grabar(articulo);
 	}
 
@@ -51,8 +52,8 @@ public class Logica {
 		return null;
 	}
 
-	public boolean insertarLineaPedido() {
-		return false;
+	public boolean insertarLineaPedido(Linea linea) {
+		return pedidoTemporal.getLineas().add(linea);
 	}
 
 	private Pedido pedidoTemporal;
@@ -94,7 +95,7 @@ public class Logica {
 	}
 
 	public Pedido obtenerPedido(Pedido pedido) {
-		return datos.obtenerPedido(String.valueOf(pedido.getNumero()), pedido.getCliente().getDniCif());
+		return datos.obtenerPedido(pedido.getCliente().getDniCif(),String.valueOf(pedido.getNumero()));
 
 	}
 
@@ -127,11 +128,9 @@ public class Logica {
 		return datos.getCantidadArticulos();
 	}
 
-	public int getCantidadPedidos(Cliente cliente) {
-		return datos.getCantidadPedidos(cliente);
+	public int getCantidadPedidos() {
+		return datos.getCantidadPedidos();
 	}
-	
-	private Articulo articuloTemporal;
 
 	public void setArticuloTemporal(Articulo articulo) {
 		this.articuloTemporal = articulo;

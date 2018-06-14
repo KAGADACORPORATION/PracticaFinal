@@ -1,6 +1,7 @@
 package vista;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
@@ -41,6 +42,26 @@ public class VistaAccederAltaPedido extends JPanel {
 
 	public VistaEjecutarAltaPedido getVistaEjecutarAltaPedido() {
 		return vistaEjecutarAltaPedido;
+	}
+
+	public JButton getButtonBuscarCliente() {
+		return vistaEjecutarAltaPedido.getButtonBuscarCliente();
+	}
+
+	public JButton getButtonBucarArticulo() {
+		return vistaEjecutarAltaPedido.getButtonBucarArticulo();
+	}
+
+	public JButton getButtonAddLinea() {
+		return vistaEjecutarAltaPedido.getButtonAddLinea();
+	}
+
+	public JTextField getTextCantidad() {
+		return vistaEjecutarAltaPedido.getTextCantidad();
+	}
+
+	public JButton getBtnConfirmarPedido() {
+		return vistaEjecutarAltaPedido.getBtnConfirmarPedido();
 	}
 
 }
