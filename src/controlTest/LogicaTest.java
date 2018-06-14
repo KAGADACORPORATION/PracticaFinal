@@ -1,4 +1,4 @@
-package control;
+package controlTest;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,9 @@ import java.io.File;
 import org.junit.After;
 import org.junit.Test;
 
+import control.Logica;
+import control.Puente;
+import control.Validador;
 import modelo.Articulo;
 import modelo.Cliente;
 import modelo.Pedido;

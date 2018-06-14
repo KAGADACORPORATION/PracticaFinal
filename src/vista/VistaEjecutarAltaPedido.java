@@ -21,7 +21,6 @@ import java.awt.Color;
 
 public class VistaEjecutarAltaPedido extends JPanel {
 
-	private JTextField textIdentificacion;
 	private JTextField textCantidad;
 	private JButton btnConfirmarPedido;
 	private JButton btnAddLinea;
@@ -46,23 +45,6 @@ public class VistaEjecutarAltaPedido extends JPanel {
 		gbl_panel.columnWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
-
-		JLabel lblCliente = new JLabel("N\u00FAmero identificaci\u00F3n:");
-		GridBagConstraints gbc_lblCliente = new GridBagConstraints();
-		gbc_lblCliente.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCliente.anchor = GridBagConstraints.EAST;
-		gbc_lblCliente.gridx = 1;
-		gbc_lblCliente.gridy = 1;
-		panel.add(lblCliente, gbc_lblCliente);
-
-		textIdentificacion = new JTextField();
-		GridBagConstraints gbc_textIdentificacion = new GridBagConstraints();
-		gbc_textIdentificacion.insets = new Insets(0, 0, 5, 5);
-		gbc_textIdentificacion.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textIdentificacion.gridx = 2;
-		gbc_textIdentificacion.gridy = 1;
-		panel.add(textIdentificacion, gbc_textIdentificacion);
-		textIdentificacion.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("Cliente:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -161,10 +143,6 @@ public class VistaEjecutarAltaPedido extends JPanel {
 
 	public JLabel getLblMensaje() {
 		return lblMensaje;
-	}
-
-	public JTextField getTextIdentificacion() {
-		return textIdentificacion;
 	}
 
 	public JButton getButtonAddLinea() {

@@ -197,4 +197,32 @@ public class VistaPrincipal extends JFrame {
 		return panelPedido.getModeloTablaPedido();
 	}
 
+	public JButton getBtnConsultarPedidos() {
+		return panelPedido.getBtnConsultarPedidos();
+	}
+
+	public JButton getBtnAccederAltaPedido() {
+		return panelPedido.getBtnAccederAltaPedido();
+	}
+
+	public JButton getButtonBuscarCliente() {
+		return panelPedido.getButtonBuscarCliente();
+	}
+
+	public JButton getButtonBucarArticulo() {
+		return panelPedido.getButtonBucarArticulo();
+	}
+
+	public JButton getButtonAddLinea() {
+		return panelPedido.getButtonAddLinea();
+	}
+
+	public JTextField getTextCantidad() {
+		return panelPedido.getTextCantidad();
+	}
+
+	public JButton getBtnConfirmarPedido() {
+		return panelPedido.getBtnConfirmarPedido();
+	}
+
 }

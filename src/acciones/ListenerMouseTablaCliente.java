@@ -22,7 +22,6 @@ public class ListenerMouseTablaCliente implements MouseListener {
 		JTable tabla = vista.getTable();
 		if (e.getButton() == MouseEvent.BUTTON3) {
 			int r = tabla.rowAtPoint(e.getPoint());
-			System.out.println(r);
 			if (r >= 0 && r < tabla.getRowCount()) {
 				tabla.setRowSelectionInterval(r, r);
 			} else {

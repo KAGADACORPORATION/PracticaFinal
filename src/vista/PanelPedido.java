@@ -76,4 +76,24 @@ public class PanelPedido extends JPanel {
 	public DefaultTableModel getModeloTablaPedido() {
 		return vistaAccederPedido.getModeloTablaPedido();
 	}
+
+	public JButton getButtonBuscarCliente() {
+		return vistaAccederAltaPedido.getButtonBuscarCliente();
+	}
+
+	public JButton getButtonBucarArticulo() {
+		return vistaAccederAltaPedido.getButtonBucarArticulo();
+	}
+
+	public JButton getButtonAddLinea() {
+		return vistaAccederAltaPedido.getButtonAddLinea();
+	}
+
+	public JTextField getTextCantidad() {
+		return vistaAccederAltaPedido.getTextCantidad();
+	}
+
+	public JButton getBtnConfirmarPedido() {
+		return vistaAccederAltaPedido.getBtnConfirmarPedido();
+	}
 }

@@ -27,9 +27,5 @@ public class RegistrarPedido implements ActionListener {
 		} else {
 			vista.getLblMensaje().setText("error al crear");
 		}
-		System.out.println(pedido.getCliente().getRazonSocial());
-		
-		System.out.println(pedido.getLineas().size());
-		System.out.println(pedido.getLinea(1).getArticulo().getNombre());
 	}
 }
