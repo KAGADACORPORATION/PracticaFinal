@@ -25,8 +25,8 @@ public class Pedido implements Serializable {
 	}
 
 	public Linea getLinea(int numero){
-		assert numero>0&&numero<=lineas.size();
-		return lineas.get(numero-1);
+		assert numero>=0&&numero<lineas.size();
+		return lineas.get(numero);
 	}
 
 	public Linea getLast(){

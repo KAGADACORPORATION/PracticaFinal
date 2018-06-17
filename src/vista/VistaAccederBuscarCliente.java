@@ -1,6 +1,7 @@
 package vista;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -37,6 +38,14 @@ public VistaEjecutarBuscarCliente getVistaEjecutarBuscarCliente() {
 
 public DefaultTableModel getModeloTabla() {
 	return VistaEjecutarBuscarCliente.getModeloTabla();
+}
+
+public JTextField getTextFieldTablaCliente() {
+	return VistaEjecutarBuscarCliente.getTextFieldTablaCliente();
+}
+
+public JTable getTablaCliente() {
+	return VistaEjecutarBuscarCliente.getTablaCliente();
 }
 
 }

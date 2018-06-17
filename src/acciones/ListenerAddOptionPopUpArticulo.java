@@ -22,15 +22,8 @@ public class ListenerAddOptionPopUpArticulo implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		VistaEjecutarBuscarArticulo vistaBuscar = puente.getVistaEjecutarBuscarArticulo();
-		VistaEjecutarAltaPedido vistaPedido = puente.getVistaEjecutarAltaPedido();
-		JTable tabla=vistaBuscar.getTable();
-		puente.getLogica().setArticuloTemporal(puente.getLogica().obtenerArticulo(tabla.getValueAt(row, 0).toString()));
-		System.out.println("ID: "+tabla.getValueAt(row, 0));
-        System.out.println("Nombre: "+tabla.getValueAt(row, 1));
-        System.out.println("Descripcion: "+tabla.getValueAt(row, 2));
-        System.out.println("Precio: "+tabla.getValueAt(row, 3));
-        vistaPedido.getButtonBucarArticulo().setText(tabla.getValueAt(row, 0).toString());
+		puente.getLogica().setArticuloTemporal(puente.getLogica().obtenerArticulo(row));
+        puente.getButtonBucarArticulo().setText(puente.getTablaArticulo().getValueAt(row, 0).toString());
         puente.getLogica().getFrame().setVisible(false);
 	}
 }

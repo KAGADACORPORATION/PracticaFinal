@@ -130,7 +130,7 @@ public class Logica {
 	public int getCantidadClientesConPedidos() {
 		return datos.getCantidadClientesConPedidos();
 	}
-	public int CantidadDePedidosDe(Cliente cliente) {
+	public int getCantidadDePedidosDe(Cliente cliente) {
 		return datos.getCantidadDePedidosDe(cliente);
 	}
 	public void setArticuloTemporal(Articulo articulo) {
@@ -141,7 +141,15 @@ public class Logica {
 		return articuloTemporal;
 	}
 
+	public Linea obtenerLineaPedido(Pedido pedido, int i) {
+		return pedido.getLinea(i);
+	}
+	
 	public Articulo obtenerArticulo(int i) {
 		return datos.obtenerArticulo(i);
+	}
+
+	public Cliente getClienteConPedido(int i) {
+		return datos.getClienteConPedidos(i);
 	}
 }

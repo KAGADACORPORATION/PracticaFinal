@@ -7,13 +7,19 @@ import java.util.TreeMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 import acciones.ListenerMouseTablaArticulos;
 import acciones.ListenerMouseTablaCliente;
+import acciones.ListenerMouseTablaPedidosCliente;
+import acciones.ListenerMouseTablaPedidosLinea;
+import acciones.ListenerMouseTablaPedidosPedidos;
 import control.Puente;
 import modelo.Articulo;
 import modelo.Cliente;
+import modelo.Linea;
 import modelo.Pedido;
 import vista.VistaEjecutarBuscarArticulo;
 import vista.VistaEjecutarBuscarCliente;
@@ -51,8 +57,7 @@ public class Utiles {
 	}
 	
 	public static void ActualizarTablaCliente(Puente puente) {
-		VistaEjecutarBuscarCliente vista = puente.getVistaAccederBuscarCliente().getVistaEjecutarBuscarCliente();
-		cadena = vista.getTextField().getText();
+		cadena = puente.getTextFieldTablaCliente().getText();
 		while (puente.getModeloTabla().getRowCount() > 0) {
 			puente.getModeloTabla().removeRow(0);
 		}
@@ -60,18 +65,18 @@ public class Utiles {
 		for (int i = 0; i < indiceClientes.size(); i++) {
 			Cliente clienteAux = (Cliente) puente.getLogica().obtenerCliente(i);
 			if(clienteAux.getRazonSocial().toLowerCase().startsWith(cadena)) {
-				String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getDniCif(), clienteAux.getDireccion(),
+				String adicion[] = { clienteAux.getRazonSocial(),
+						clienteAux.getDniCif(), clienteAux.getDireccion(),
 						clienteAux.getTelefono() };
 				puente.getModeloTabla().addRow(adicion);
 			}
 		}
-		vista.getTable().addMouseListener(new ListenerMouseTablaCliente(puente));
-		Utiles.actualizar(puente.getVistaEjecutarBuscarCliente().getTable().getParent());
+		puente.getTablaCliente().addMouseListener(new ListenerMouseTablaCliente(puente));
+		actualizar(puente.getTablaCliente().getParent());
 	}
 	
 	public static void ActualizarTablaArticulos(Puente puente) {
-		VistaEjecutarBuscarArticulo vista = puente.getVistaEjecutarBuscarArticulo();
-		cadena = new String(vista.getTextBuscarBuscarArticulo().getText());
+		cadena = new String(puente.getTextBuscarBuscarArticulo().getText());
 		while (puente.getModeloTablaArticulo().getRowCount() > 0) {
 			puente.getModeloTablaArticulo().removeRow(0);
 		}
@@ -83,29 +88,60 @@ public class Utiles {
 				puente.getModeloTablaArticulo().addRow(adicion);
 			}
 		}
-		vista.getTable().addMouseListener(new ListenerMouseTablaArticulos(puente));
-		Utiles.actualizar(puente.getVistaEjecutarBuscarArticulo().getTable().getParent());
+		puente.getTablaArticulo().addMouseListener(new ListenerMouseTablaArticulos(puente));
+		actualizar(puente.getTablaArticulo().getParent());
 	}
 
-//	public static void ActualizarTablaPedidos(Puente puente) {
-//		VistaEjecutarBuscarPedido vista = puente.getVistaEjecutarBuscarPedido();
-//		cadena = new String(vista.getTextField().getText());
-//				
-//		while (puente.getModeloTablaPedido().getRowCount() > 0) {
-//			puente.getModeloTablaPedido().removeRow(0);
-//		}
-//		for (int i = 0; i < puente.getLogica().getCantidadPedidos(puente.getLogica().getClienteTemporal()); i++) {
-//			if(pedidoAux.getCliente().equals(obj)) {
-//				String adicion[] = { String.valueOf(pedidoAux.getIdArticulo()), pedidoAux.getNombre(), pedidoAux.getDescripcion(),
-//						String.valueOf(pedidoAux.getCurrentPrice())};
-//				puente.getModeloTablaArticulo().addRow(adicion);
-//			}
-//		}
-//		vista.getTable().addMouseListener(new ListenerMouseTablaArticulos(puente));
-//		Utiles.actualizar(puente.getVistaEjecutarBuscarArticulo().getTable().getParent());
-//	}
+	public static void ActualizarTablaPedidos(Puente puente) {
+		cadena = puente.getTextFieldBuscarPedido().getText();
+		while (puente.getModeloTablaPedidoCliente().getRowCount() > 0) {
+			puente.getModeloTablaPedidoCliente().removeRow(0);
+		}
+		int i = 0;
+		while((Cliente) puente.getLogica().obtenerCliente(i)!=null) {
+			Cliente clienteAux = (Cliente) puente.getLogica().obtenerCliente(i);
+			if(puente.getLogica().getCantidadDePedidosDe(clienteAux)>0) {
+				String adicion[] = { clienteAux.getRazonSocial(), clienteAux.getDniCif(), clienteAux.getDireccion(),
+						clienteAux.getTelefono(),String.valueOf(puente.getLogica().getCantidadDePedidosDe(clienteAux)) };
+				puente.getModeloTablaPedidoCliente().addRow(adicion);
+			}
+			i++;
+		}
+		puente.getTablaPedidoCliente().addMouseListener(new ListenerMouseTablaPedidosPedidos(puente));
+		actualizar(puente);
+	}
 	
 	public static void actualizar(JPanel panel) {
 	  	SwingUtilities.updateComponentTreeUI(panel);
+	}
+
+	public static void actualizarTablaPedidosDos(Puente puente, int rowindex) {
+		while (puente.getModeloTablaPedidoPedido().getRowCount() > 0) {
+			puente.getModeloTablaPedidoPedido().removeRow(0);
+		}
+		Cliente clienteAux = puente.getLogica().obtenerCliente(String.valueOf(puente.getTablaPedidoCliente().getValueAt(rowindex, 0)));
+		for (int i = 0; i < puente.getLogica().getCantidadDePedidosDe(clienteAux); i++) {
+			Pedido pedidoAux = puente.getLogica().obtenerPedido(clienteAux.getRazonSocial(),String.valueOf(i));
+			String adicion[] = { String.valueOf(pedidoAux.getNumero()),String.valueOf(pedidoAux.getLineas().size())};
+				puente.getModeloTablaPedidoPedido().addRow(adicion);
+		}
+		puente.getTablaPedidoPedido().addMouseListener(new ListenerMouseTablaPedidosLinea(puente,clienteAux));
+		actualizar(puente.getTablaPedidoPedido().getParent());
+	}
+	
+	public static void actualizarTablaPedidosTres(Puente puente, int rowindex,Cliente cliente) {
+		while (puente.getTablaPedidoLinea().getRowCount() > 0) {
+			puente.getModeloTablaPedidoLinea().removeRow(0);
+		}
+		Pedido pedidoAux = puente.getLogica().obtenerPedido(cliente.getRazonSocial(), String.valueOf(puente.getTablaPedidoPedido().getValueAt(rowindex,0)));
+		int i = 0;
+		while(puente.getLogica().obtenerLineaPedido(pedidoAux, i)!=null) {
+			String adicion[] = { pedidoAux.getLinea(i).getArticulo().getNombre(), String.valueOf(pedidoAux.getLinea(i).getArticulo().getCurrentPrice()),
+					String.valueOf(pedidoAux.getLinea(i).getCantidad()),
+				String.valueOf(pedidoAux.getLinea(i).getArticulo().getCurrentPrice()*pedidoAux.getLinea(i).getCantidad()) };
+				puente.getModeloTablaPedidoLinea().addRow(adicion);
+				i++;
+			}
+		actualizar(puente.getTablaPedidoLinea());
 	}
 }

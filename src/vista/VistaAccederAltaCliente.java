@@ -1,6 +1,8 @@
 package vista;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -34,6 +36,26 @@ public class VistaAccederAltaCliente extends JPanel {
 
 	public VistaEjecutarAltaCliente getVistaEjecutarAltaCliente() {
 		return VistaEjecutarAltaCliente;
+	}
+
+	public JTextField getTxtDireccion() {
+		return VistaEjecutarAltaCliente.getTxtDireccion();
+	}
+
+	public JTextField getTxtTelefono() {
+		return VistaEjecutarAltaCliente.getTxtTelefono();
+	}
+
+	public JTextField getTxtDNI() {
+		return VistaEjecutarAltaCliente.getTxtDNI();
+	}
+
+	public JTextField getTxtNombre() {
+		return VistaEjecutarAltaCliente.getTxtNombre();
+	}
+
+	public JButton getBtnValidar() {
+		return VistaEjecutarAltaCliente.getBtnValidar();
 	}
 
 

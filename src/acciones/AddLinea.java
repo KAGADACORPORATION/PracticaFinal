@@ -27,11 +27,14 @@ public class AddLinea implements ActionListener {
 		VistaEjecutarAltaPedido vista = puente.getVistaEjecutarAltaPedido();
 		Logica logica = puente.getLogica();
 		comprobarSiExtistePedido(logica);
-		Linea linea = new Linea(logica.getArticuloTemporal(), Integer.valueOf(vista.getTextCantidad().getText()).intValue());
+		
+		Linea linea = new Linea(logica.getArticuloTemporal(), logica.getArticuloTemporal().getIdArticulo());
+		
 		if (puente.getValidador().validarLineaPedido(linea)) {
 			puente.getLogica().insertarLineaPedido(linea);
 			vista.getLblMensaje().setText("linea añadida");
-			puente.getBtnBuscarCliente().setEnabled(true);
+			puente.getBtnBuscarCliente().setEnabled(false);
+			puente.getBotonArticulo().setText("");
 		} else {
 			vista.getLblMensaje().setText("error");
 		}
@@ -51,7 +54,7 @@ public class AddLinea implements ActionListener {
 	}
 
 	public int generarIdPedido() {
-		return puente.getLogica().getCantidadClientesConPedidos();
+		return puente.getLogica().getCantidadDePedidosDe(puente.getLogica().getClienteTemporal());
 	}
 
 }

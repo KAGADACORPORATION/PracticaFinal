@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import java.awt.BorderLayout;
@@ -69,12 +70,8 @@ public class PanelPedido extends JPanel {
 		return vistaAccederPedido.getVistaEjecutarBuscarPedido();
 	}
 
-	public JTextField getTextField() {
-		return vistaAccederPedido.getTextField();
-	}
-
-	public DefaultTableModel getModeloTablaPedido() {
-		return vistaAccederPedido.getModeloTablaPedido();
+	public JTextField getTextFieldBuscarPedido() {
+		return vistaAccederPedido.getTextFieldBuscarPedido();
 	}
 
 	public JButton getButtonBuscarCliente() {
@@ -95,5 +92,29 @@ public class PanelPedido extends JPanel {
 
 	public JButton getBtnConfirmarPedido() {
 		return vistaAccederAltaPedido.getBtnConfirmarPedido();
+	}
+
+	public DefaultTableModel getModeloTablaPedidoCliente() {
+		return vistaAccederPedido.getModeloTablaPedidoCliente();
+	}
+
+	public DefaultTableModel getModeloTablaPedidoPedido() {
+		return vistaAccederPedido.getModeloTablaPedidoPedido();
+	}
+
+	public DefaultTableModel getModeloTablaPedidoLinea() {
+		return vistaAccederPedido.getModeloTablaPedidoLinea();
+	}
+
+	public JTable getTablaPedidoCliente() {
+		return vistaAccederPedido.getTablaPedidoCliente();
+	}
+
+	public JTable getTablaPedidoPedido() {
+		return vistaAccederPedido.getTablaPedidoPedido();
+	}
+
+	public JTable getTablaPedidoLinea() {
+		return vistaAccederPedido.getTablaPedidoLinea();
 	}
 }

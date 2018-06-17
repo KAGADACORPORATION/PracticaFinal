@@ -20,7 +20,7 @@ public class BorrarCliente implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		VistaEjecutarBuscarCliente vista = puente.getVistaAccederBuscarCliente().getVistaEjecutarBuscarCliente();
-		JTable tabla=vista.getTable();
+		JTable tabla=vista.getTablaCliente();
 		this.puente.getLogica().borrarClientePorNombre(String.valueOf(tabla.getValueAt(row, 0)));
 		Utiles.ActualizarTablaCliente(puente);
 	}

@@ -1,13 +1,8 @@
 package acciones;
 
-import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.SwingUtilities;
 
 import control.Puente;
 import utiles.Utiles;
@@ -26,7 +21,6 @@ public class ListenerAccederAltaArticulo implements ActionListener {
 		puente.getContentPane().setLayout(new GridLayout(1, 1, 0, 0));
 		puente.getContentPane().add(puente.getVistaEjecutarAltaArticulo());
 		Utiles.actualizar(puente);
-
 	}
 
 }

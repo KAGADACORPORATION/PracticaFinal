@@ -23,8 +23,7 @@ public class ListenerMouseTablaArticulos implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		VistaEjecutarBuscarArticulo vista = puente.getVistaEjecutarBuscarArticulo();
-		JTable tabla = vista.getTable();
+		JTable tabla = puente.getTablaArticulo();
 		if (e.getButton() == MouseEvent.BUTTON3) {
 			int r = tabla.rowAtPoint(e.getPoint());
 			if (r >= 0 && r < tabla.getRowCount()) {
@@ -53,7 +52,7 @@ public class ListenerMouseTablaArticulos implements MouseListener {
 		}
 	}
 
-	private void doPop(MouseEvent e, final JTable table, final int row) {
+	private void doPop(MouseEvent e, JTable table, int row) {
 		PopUpTabla menu = new PopUpTabla();
 		menu.addOption.addActionListener(new ListenerAddOptionPopUpArticulo(puente, row));
 		menu.show(e.getComponent(), e.getX(), e.getY());

@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import java.awt.GridLayout;
@@ -93,5 +94,9 @@ public class PanelArticulo extends JPanel {
 
 	public DefaultTableModel getModeloTablaArticulo() {
 		return vistaAccederBuscarArticulo.getModeloTablaArticulo();
+	}
+
+	public JTable getTablaArticulo() {
+		return vistaAccederBuscarArticulo.getTablaArticulo();
 	}
 }

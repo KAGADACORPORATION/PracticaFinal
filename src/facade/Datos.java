@@ -61,7 +61,8 @@ public class Datos {
 	 }
 	
 	public boolean grabar(Pedido pedido) {
-		return pedidos.grabar(String.valueOf(pedido.getCliente().getRazonSocial()),String.valueOf(pedido.getNumero()),pedido);
+		Cliente cliente = pedido.getCliente();
+		return pedidos.grabar(String.valueOf(cliente.getRazonSocial()),String.valueOf(getCantidadDePedidosDe(cliente)),pedido);
 	}
 
 //	public boolean borrar(Pedido pedido) {
@@ -92,8 +93,8 @@ public class Datos {
 		return articulos.obtener(i);
 	}
 
-	public boolean insertarLineaPedido(Pedido pedido,Linea linea) {
-		return new DAO<>().grabar(Utiles.PEDIDORUTA+"/"+pedido.getNumero()+"/"+pedido.getCliente().getRazonSocial()+pedido.getNumero()+".ped", linea, true);
+	public Cliente getClienteConPedidos(int i) {
+		return ((Cliente)((Pedido)pedidos.getElementoConArchivos(i)).getCliente());
 	}
 	
 }
