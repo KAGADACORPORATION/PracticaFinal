@@ -189,12 +189,9 @@ public class VistaPrincipal extends JFrame {
 		return panelPedido.getVistaEjecutarBuscarPedido();
 	}
 
-	public JTextField getTextField() {
-		return panelPedido.getTextField();
-	}
-
-	public DefaultTableModel getModeloTablaPedido() {
-		return panelPedido.getModeloTablaPedido();
+	
+	public JTextField getTextFieldBuscarPedido() {
+		return panelPedido.getTextFieldBuscarPedido();
 	}
 
 	public JButton getBtnConsultarPedidos() {
@@ -223,6 +220,62 @@ public class VistaPrincipal extends JFrame {
 
 	public JButton getBtnConfirmarPedido() {
 		return panelPedido.getBtnConfirmarPedido();
+	}
+
+	public DefaultTableModel getModeloTablaPedidoCliente() {
+		return panelPedido.getModeloTablaPedidoCliente();
+	}
+
+	public DefaultTableModel getModeloTablaPedidoPedido() {
+		return panelPedido.getModeloTablaPedidoPedido();
+	}
+
+	public DefaultTableModel getModeloTablaPedidoLinea() {
+		return panelPedido.getModeloTablaPedidoLinea();
+	}
+
+	public JTable getTablaPedidoCliente() {
+		return panelPedido.getTablaPedidoCliente();
+	}
+
+	public JTable getTablaPedidoPedido() {
+		return panelPedido.getTablaPedidoPedido();
+	}
+
+	public JTable getTablaPedidoLinea() {
+		return panelPedido.getTablaPedidoLinea();
+	}
+
+	public JTextField getTextFieldTablaCliente() {
+		return panelCliente.getTextFieldTablaCliente();
+	}
+
+	public JTable getTablaCliente() {
+		return panelCliente.getTablaCliente();
+	}
+
+	public JTextField getTxtDireccion() {
+		return panelCliente.getTxtDireccion();
+	}
+
+	public JTextField getTxtTelefono() {
+		return panelCliente.getTxtTelefono();
+	}
+
+	public JTextField getTxtDNI() {
+		return panelCliente.getTxtDNI();
+	}
+
+	public JTextField getTxtNombre() {
+		return panelCliente.getTxtNombre();
+	}
+
+	public JButton getBtnValidar() {
+		return panelCliente.getBtnValidar();
+	}
+
+	public JTable getTablaArticulo() {
+		return panelArticulo.getTablaArticulo();
 	}
 
 }

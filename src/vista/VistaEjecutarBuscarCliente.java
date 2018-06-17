@@ -19,7 +19,6 @@ import javax.swing.JButton;
 
 public class VistaEjecutarBuscarCliente extends JPanel {
 	private JTextField textField;
-	private JButton btnBuscarCliente;
 	private String[][] data;
 	private String[] nombresColumnas = { "Nombre", "DNI/CIF", "Dirección", "Teléfono" };
 	private DefaultTableModel modeloTabla = new DefaultTableModel(data, nombresColumnas);
@@ -38,7 +37,7 @@ public class VistaEjecutarBuscarCliente extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		panel_1.add(scrollPane, BorderLayout.CENTER);
 		table = new JTable(modeloTabla);
-		table.setEnabled(false);
+		table.setEnabled(true);
 		scrollPane.setViewportView(table);
 
 		JPanel panel_2 = new JPanel();
@@ -71,14 +70,6 @@ public class VistaEjecutarBuscarCliente extends JPanel {
 		panel_2.add(textField, gbc_textField);
 		textField.setColumns(10);
 
-		btnBuscarCliente = new JButton("Mostrar Todos");
-		GridBagConstraints gbc_btnBuscarCliente = new GridBagConstraints();
-		gbc_btnBuscarCliente.gridwidth = 3;
-		gbc_btnBuscarCliente.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBuscarCliente.gridx = 12;
-		gbc_btnBuscarCliente.gridy = 1;
-		panel_2.add(btnBuscarCliente, gbc_btnBuscarCliente);
-
 		GridBagConstraints gbc_textFieldDescripcion = new GridBagConstraints();
 		gbc_textFieldDescripcion.gridheight = 3;
 		gbc_textFieldDescripcion.gridwidth = 3;
@@ -95,12 +86,8 @@ public class VistaEjecutarBuscarCliente extends JPanel {
 		gbc_textFieldPrecio.gridy = 5;
 	}
 
-	public JTextField getTextField() {
+	public JTextField getTextFieldTablaCliente() {
 		return textField;
-	}
-
-	public JButton getBtnBuscarCliente() {
-		return btnBuscarCliente;
 	}
 
 	public DefaultTableModel getModeloTabla() {
@@ -111,7 +98,7 @@ public class VistaEjecutarBuscarCliente extends JPanel {
 		this.modeloTabla = modeloTabla;
 	}
 
-	public JTable getTable() {
+	public JTable getTablaCliente() {
 		return table;
 	}
 

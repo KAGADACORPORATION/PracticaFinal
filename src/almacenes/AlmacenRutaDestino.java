@@ -2,6 +2,7 @@ package almacenes;
 
 import java.io.File;
 
+import acceso.DAO;
 import acceso.DAORuta;
 import modelo.Cliente;
 import modelo.Pedido;
@@ -79,5 +80,9 @@ public class AlmacenRutaDestino<T> {
 			 return new File(pathInicial+'/'+subpath).listFiles().length;
 		 }
 		return 0;
+	}
+
+	public Object getElementoConArchivos(int i) {
+		return ((Object)new DAO<>().leer(new File(pathInicial).listFiles()[i].listFiles()[0].getPath()));
 	}
 }

@@ -2,44 +2,62 @@ package vista;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
 import java.awt.BorderLayout;
-
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
-import java.awt.Color;
+import java.awt.GridLayout;
+import javax.swing.ListSelectionModel;
 
 public class VistaEjecutarBuscarPedido extends JPanel {
 
-	private JTextField textField;
-	private JButton boton;
-	private String[][] data;
-	private String[] nombresColumnas = { "ID", "Fecha", "Cliente", "Total" };
-	private DefaultTableModel modeloTablaPedido = new DefaultTableModel(data, nombresColumnas);
-	private JTable table;
+	private JTextField textFieldBuscarPedido;
+	private String[][] dataCliente;
+	private String [][]dataPedido;
+	private String [][]dataLinea;
+	private String[] nombresColumnas = { "Nombre", "DNI/CIF", "Dirección", "Teléfono","Cantidad"};
+	private String[] nombresColumnasPedido = { "Numero", "Lineas"};
+	private String[] nombresColumnasLinea = { "Nombre Articulo", "Precio", "Cantidad", "Total"};
+	private DefaultTableModel modeloTablaPedidoCliente;
+	private DefaultTableModel modeloTablaPedidoPedido;
+	private DefaultTableModel modeloTablaPedidoLinea;
+	private JTable tablaPedidoCliente;
+	private JTable tablaPedidoPedido;
+	private JTable tablaPedidoLinea;
+	
 
 	public VistaEjecutarBuscarPedido() {
+		modeloTablaPedidoCliente = new DefaultTableModel(dataCliente, nombresColumnas);
+		modeloTablaPedidoPedido = new DefaultTableModel(dataPedido, nombresColumnasPedido);
+		modeloTablaPedidoLinea = new DefaultTableModel(dataLinea, nombresColumnasLinea);
 		setLayout(new BorderLayout(0, 0));
 
 		JPanel panel_1 = new JPanel();
 		add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		panel_1.setLayout(new GridLayout(3, 1, 0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
-		panel_1.add(scrollPane, BorderLayout.CENTER);
-		table = new JTable(modeloTablaPedido);
-		table.setEnabled(false);
-		scrollPane.setViewportView(table);
+		panel_1.add(scrollPane);
+		tablaPedidoCliente = new JTable(modeloTablaPedidoCliente);
+		tablaPedidoCliente.setEnabled(false);
+		scrollPane.setViewportView(tablaPedidoCliente);
+		
+		JScrollPane scrollPane2 = new JScrollPane();
+		panel_1.add(scrollPane2);
+		tablaPedidoPedido = new JTable(modeloTablaPedidoPedido);
+		scrollPane2.setViewportView(tablaPedidoPedido);
+		tablaPedidoPedido.setEnabled(false);
+		
+		JScrollPane scrollPane3 = new JScrollPane();
+		panel_1.add(scrollPane3);
+		tablaPedidoLinea = new JTable(modeloTablaPedidoLinea);
+		scrollPane3.setViewportView(tablaPedidoLinea);
+		tablaPedidoLinea.setEnabled(false);
 
 		JPanel panel_2 = new JPanel();
 		add(panel_2, BorderLayout.NORTH);
@@ -61,23 +79,15 @@ public class VistaEjecutarBuscarPedido extends JPanel {
 		gbc_lblDNI.insets = new Insets(0, 0, 5, 5);
 		panel_2.add(lblDNI, gbc_lblDNI);
 
-		textField = new JTextField();
+		textFieldBuscarPedido = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 5;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 6;
 		gbc_textField.gridy = 1;
-		panel_2.add(textField, gbc_textField);
-		textField.setColumns(10);
-
-		boton = new JButton("Mostrar Todos");
-		GridBagConstraints gbc_btnBuscarCliente = new GridBagConstraints();
-		gbc_btnBuscarCliente.gridwidth = 3;
-		gbc_btnBuscarCliente.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBuscarCliente.gridx = 12;
-		gbc_btnBuscarCliente.gridy = 1;
-		panel_2.add(boton, gbc_btnBuscarCliente);
+		panel_2.add(textFieldBuscarPedido, gbc_textField);
+		textFieldBuscarPedido.setColumns(10);
 
 		GridBagConstraints gbc_textFieldDescripcion = new GridBagConstraints();
 		gbc_textFieldDescripcion.gridheight = 3;
@@ -95,20 +105,32 @@ public class VistaEjecutarBuscarPedido extends JPanel {
 		gbc_textFieldPrecio.gridy = 5;
 	}
 
-	public JTextField getTextField() {
-		return textField;
+	public JTextField getTextFieldBuscarPedido() {
+		return textFieldBuscarPedido;
 	}
 
-	public JButton getButton() {
-		return boton;
+	public DefaultTableModel getModeloTablaPedidoCliente() {
+		return modeloTablaPedidoCliente;
 	}
 
-	public JTable getTable() {
-		return table;
+	public DefaultTableModel getModeloTablaPedidoPedido() {
+		return modeloTablaPedidoPedido;
 	}
 
-	public DefaultTableModel getModeloTablaPedido() {
-		return modeloTablaPedido;
+	public DefaultTableModel getModeloTablaPedidoLinea() {
+		return modeloTablaPedidoLinea;
+	}
+
+	public JTable getTablaPedidoCliente() {
+		return tablaPedidoCliente;
+	}
+
+	public JTable getTablaPedidoPedido() {
+		return tablaPedidoPedido;
+	}
+
+	public JTable getTablaPedidoLinea() {
+		return tablaPedidoLinea;
 	}
 
 }

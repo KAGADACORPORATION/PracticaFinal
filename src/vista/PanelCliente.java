@@ -73,4 +73,32 @@ public class PanelCliente extends JPanel {
 		return vistaAccederBuscarCliente.getVistaEjecutarBuscarCliente();
 	}
 
+	public JTextField getTextFieldTablaCliente() {
+		return vistaAccederBuscarCliente.getTextFieldTablaCliente();
+	}
+
+	public JTable getTablaCliente() {
+		return vistaAccederBuscarCliente.getTablaCliente();
+	}
+
+	public JTextField getTxtDireccion() {
+		return vistaAccederAltaCliente.getTxtDireccion();
+	}
+
+	public JTextField getTxtTelefono() {
+		return vistaAccederAltaCliente.getTxtTelefono();
+	}
+
+	public JTextField getTxtDNI() {
+		return vistaAccederAltaCliente.getTxtDNI();
+	}
+
+	public JTextField getTxtNombre() {
+		return vistaAccederAltaCliente.getTxtNombre();
+	}
+
+	public JButton getBtnValidar() {
+		return vistaAccederAltaCliente.getBtnValidar();
+	}
+
 }

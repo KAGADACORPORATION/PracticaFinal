@@ -38,7 +38,7 @@ public class VistaAccederBuscarArticulo extends JPanel {
 	public JButton getBotonBuscarArticulo() {
 		return botonBuscarArticulo;
 	}
-
+	
 	public VistaEjecutarBuscarArticulo getVistaEjecutarBuscarArticulo() {
 		return vistaEjecutarBuscarArticulo;
 	}
@@ -57,6 +57,10 @@ public class VistaAccederBuscarArticulo extends JPanel {
 
 	public DefaultTableModel getModeloTablaArticulo() {
 		return vistaEjecutarBuscarArticulo.getModeloTablaArticulo();
+	}
+
+	public JTable getTablaArticulo() {
+		return vistaEjecutarBuscarArticulo.getTable();
 	}
 	
 }

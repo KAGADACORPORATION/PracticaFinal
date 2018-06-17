@@ -44,4 +44,13 @@ public class Linea implements Serializable{
 		 vector.add(articulo.getCurrentPrice()*cantidad);
 		return vector;
 	}
+	@Override
+	public boolean equals(Object obj) {
+		Linea linea = (Linea) obj;
+		boolean retorno = super.equals(obj);
+		if(!retorno){
+			retorno = this.getArticulo().getIdArticulo()==linea.articulo.getIdArticulo()&&this.getCantidad()==linea.cantidad;
+		}
+		return retorno;
+	}
 }

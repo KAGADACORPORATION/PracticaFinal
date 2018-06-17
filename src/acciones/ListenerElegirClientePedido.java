@@ -27,7 +27,7 @@ public class ListenerElegirClientePedido implements ActionListener {
 		ventana.getContentPane().add(puente.getVistaEjecutarBuscarCliente());
 		VistaEjecutarBuscarCliente vista = puente.getVistaEjecutarBuscarCliente();
 		Utiles.ActualizarTablaCliente(puente);	
-		vista.getTable().addMouseListener(new ListenerMouseTablaCliente(puente));
+		vista.getTablaCliente().addMouseListener(new ListenerMouseTablaCliente(puente));
 		Utiles.actualizar(puente);
 		ventana.setVisible(true);
 		puente.getLogica().setFrame(ventana);

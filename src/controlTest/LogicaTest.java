@@ -133,8 +133,13 @@ public class LogicaTest {
 	
 	@Test
 	public void testInsertarLineaPedido() {
-		assertTrue(pedidoUno.insertarLinea(linea));
-		assertTrue(pedidoUno.insertarLinea(lineaDos));
+		Pedido pedidoAux = pedidoUno;
+		assertTrue(pedidoAux.insertarLinea(linea));
+		assertTrue(pedidoAux.insertarLinea(lineaDos));
+		assertTrue(instancia.grabarPedido(pedidoAux));
+		assertEquals(instancia.obtenerPedido(pedidoAux.getCliente().getRazonSocial(), String.valueOf(pedidoAux.getNumero())), pedidoUno);
+		assertEquals(instancia.obtenerLineaPedido(pedidoAux, 0), linea);
+		assertEquals(instancia.obtenerLineaPedido(pedidoAux, 1), lineaDos);
 	}
 
 
